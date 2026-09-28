@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>戦コレ6 セリフ示唆</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="戦コレ6">
+<meta name="theme-color" content="#2A0F18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F6F1EC; --surface:#FFFFFF; --ink:#23161A; --muted:#6E5D62; --line:#E4D8D2;
+  --head:#2A0F18; --head-ink:#FBF3EE; --accent:#C2334A; --accent-soft:#F8E1E4;
+  --ane:#7A3FB8; --ane-soft:#EEE4F8; --imo:#D9577A; --imo-soft:#FBE3EA;
+  --t-def:#8A7F84; --t-b:#2C6CD6; --t-heaven:#D98A12; --t-strong:#C2334A; --t-top:#7A3FB8;
+  --mark:#FFF3B8;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#140B0E; --surface:#1F1418; --ink:#F1E7EA; --muted:#B3A2A8; --line:#3A2A30;
+    --head:#0B0406; --head-ink:#F1E7EA; --accent:#F0677D; --accent-soft:#3A1820;
+    --ane:#B98AEB; --ane-soft:#2C1D3D; --imo:#F28AA7; --imo-soft:#3A1A25;
+    --t-def:#8F8489; --t-b:#6FA3F0; --t-heaven:#F0B04A; --t-strong:#F0677D; --t-top:#B98AEB;
+    --mark:#4A3F12;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#140B0E; --surface:#1F1418; --ink:#F1E7EA; --muted:#B3A2A8; --line:#3A2A30;
+  --head:#0B0406; --head-ink:#F1E7EA; --accent:#F0677D; --accent-soft:#3A1820;
+  --ane:#B98AEB; --ane-soft:#2C1D3D; --imo:#F28AA7; --imo-soft:#3A1A25;
+  --t-def:#8F8489; --t-b:#6FA3F0; --t-heaven:#F0B04A; --t-strong:#F0677D; --t-top:#B98AEB;
+  --mark:#4A3F12;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;font-size:15px;line-height:1.7}
+.wrap{max-width:960px;margin:0 auto;padding-inline:16px}
+header{background:var(--head);color:var(--head-ink);padding-block:calc(32px + env(safe-area-inset-top,0px)) 26px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;opacity:.7}
+h1{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(28px,6vw,46px);line-height:1.2;margin:.2em 0 .35em;text-wrap:balance}
+h1 .six{color:var(--accent)}
+header p{margin:0;opacity:.85;max-width:60ch}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:8px;flex-wrap:wrap;padding-block:10px}
+nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;background:var(--accent-soft)}
+nav a:hover,nav a:focus-visible{background:var(--accent);color:#fff;outline:none}
+main{padding-bottom:56px}
+section{margin-top:40px;scroll-margin-top:64px}
+h2{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:24px;margin:0 0 4px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h2 small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.1em}
+.lead{color:var(--muted);margin:0 0 16px;max-width:65ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card + .card{margin-top:14px}
+.card h3{font-size:16px;margin:0 0 6px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+th{font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap}
+.serif{font-weight:700;white-space:nowrap}
+.who{display:inline-block;font-size:12px;font-weight:700;line-height:1;padding:5px 8px;border-radius:4px;white-space:nowrap}
+.ane{background:var(--ane-soft);color:var(--ane)}
+.imo{background:var(--imo-soft);color:var(--imo)}
+.tag{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.lv-def{--c:var(--t-def)} .lv-b{--c:var(--t-b)} .lv-heaven{--c:var(--t-heaven)} .lv-strong{--c:var(--t-strong)} .lv-top{--c:var(--t-top)}
+td.imp{font-weight:500}
+td.imp .tag{background:var(--c)}
+tr.hot td.imp{color:var(--c);font-weight:700}
+.note{font-size:13px;color:var(--muted);margin:10px 0 0}
+.cmd{font-family:"IBM Plex Mono",monospace;font-size:13px;background:var(--accent-soft);padding:2px 6px;border-radius:4px;white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin:0 0 14px}
+@media (max-width:560px){ .pair td:first-child{white-space:normal} .serif{white-space:normal} }
+footer{border-top:1px solid var(--line);margin-top:48px;padding-top:14px;font-size:13px;color:var(--muted)}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">SMART PACHISLOT / KONAMI</div>
+    <h1>スマスロ 戦国コレクション<span class="six">6</span><br>セリフ示唆まとめ</h1>
+    <p>鬼ヶ島チャレンジ中の姉鬼・妹鬼のセリフと、AT終了画面のコナミコマンドで出るボイスの示唆だけをまとめました。</p>
+  </div>
+</header>
+
+<nav aria-label="目次">
+  <div class="wrap">
+    <a href="#oni">鬼ヶ島チャレンジ</a>
+    <a href="#end">AT終了画面</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="oni">
+    <h2>鬼ヶ島チャレンジ <small>ONIGASHIMA</small></h2>
+    <p class="lead">コレポイント加算＋武将ガチャチケット高確率の特化ゾーン（5G継続）。画面下部の姉鬼・妹鬼のセリフが特殊パターンなら、モード・規定コレ数・ATシナリオを示唆します。姉と妹は同じ示唆内容のペアになっています。</p>
+
+    <div class="legend">
+      <span><span class="tag" style="background:var(--t-b)"></span>モードB以上</span>
+      <span><span class="tag" style="background:var(--t-heaven)"></span>天国・規定コレ数・ストック</span>
+      <span><span class="tag" style="background:var(--t-strong)"></span>当該周期当選</span>
+      <span><span class="tag" style="background:var(--t-top)"></span>ATシナリオ</span>
+    </div>
+
+    <div class="card">
+      <div class="tbl"><table>
+        <thead><tr><th>姉鬼</th><th>妹鬼</th><th>示唆内容</th></tr></thead>
+        <tbody>
+          <tr class="lv-b"><td class="serif">「もう…焦らさないで？」</td><td class="serif">「それどうやるのー！？」</td><td class="imp"><span class="tag"></span>次回モードB以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif">「もっとちょうだい？」</td><td class="serif">「もっとやってー！」</td><td class="imp"><span class="tag"></span>当該周期の規定コレ数 444以下</td></tr>
+          <tr class="lv-heaven hot"><td class="serif">「いっぱい満足させて？」</td><td class="serif">「すっごーい！」</td><td class="imp"><span class="tag"></span>次回天国モード以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif">「すっごいの来ちゃう♪」</td><td class="serif">「すごいすごーい！」</td><td class="imp"><span class="tag"></span>鬼ヶ島チャレンジ or 振り向かせたいむ（CZ）のストックあり</td></tr>
+          <tr class="lv-top hot"><td class="serif">「あら…イジワルね♪」</td><td class="serif">「なにそれなにそれー！」</td><td class="imp"><span class="tag"></span>ATシナリオ7以上 濃厚</td></tr>
+          <tr class="lv-strong hot"><td class="serif">「もうトんじゃいそう♪」</td><td class="serif">「いっしょにとぼー！」</td><td class="imp"><span class="tag"></span>当該周期AT当選＋次回天国モード 濃厚</td></tr>
+          <tr class="lv-top hot"><td class="serif">「あなた最高よ♪」</td><td class="serif">「おねえちゃんさいこー！」</td><td class="imp"><span class="tag"></span>ATシナリオ10以上 濃厚</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="end">
+    <h2>AT終了画面 <small>KONAMI COMMAND</small></h2>
+    <p class="lead">AT終了画面で <span class="cmd">↑ ↑ ↓ ↓ ← → ← → チャンスボタン</span> を入力するとボイスが流れ、モードや当選周期を示唆します。聞き逃したら十字キーの「↑」をもう一度押すと再確認できます。</p>
+
+    <div class="card">
+      <div class="tbl"><table>
+        <thead><tr><th>ボイス</th><th>示唆内容</th></tr></thead>
+        <tbody>
+          <tr class="lv-def"><td class="serif">「私が出るわ！」</td><td class="imp"><span class="tag"></span>デフォルト（ただし60%以上で「3周期以内のAT当選 or 次回天国」）</td></tr>
+          <tr class="lv-b hot"><td class="serif">「た～まらんぜよー！」</td><td class="imp"><span class="tag"></span>モードB以上 濃厚</td></tr>
+          <tr class="lv-heaven hot"><td class="serif">「早く小町と遊びましょ？」</td><td class="imp"><span class="tag"></span>天国モード 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif">「楽しくいきましょう！」</td><td class="imp"><span class="tag"></span>次々回までのモードにB以上あり</td></tr>
+          <tr class="lv-heaven"><td class="serif">「ニャッハァ～ン♪」</td><td class="imp"><span class="tag"></span>次々回までのモードに天国あり</td></tr>
+          <tr class="lv-strong"><td class="serif">「お勉強の時間です」</td><td class="imp"><span class="tag"></span>2周期以内にAT当選</td></tr>
+          <tr class="lv-strong"><td class="serif">「てんかたいへーい！」</td><td class="imp"><span class="tag"></span>3周期以内にAT当選</td></tr>
+          <tr class="lv-strong"><td class="serif">「おっかわり～！」</td><td class="imp"><span class="tag"></span>4周期以内にAT当選</td></tr>
+          <tr class="lv-strong"><td class="serif">「どすこーい！」</td><td class="imp"><span class="tag"></span>5周期以内にAT当選</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">「〇周期以内にAT当選」は、P-townでは「濃厚」、ななプレスでは「可能性」と書かれており、サイトによって表現が違います。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>内容は下記の解析サイトの公開情報をまとめたもので、メーカー公式の情報ではありません。</p>
+    <p>参考：
+      <a href="https://1geki.jp/slot/l_sencolle6/45/" target="_blank" rel="noopener">1geki 鬼ヶ島チャレンジ</a> ・
+      <a href="https://nana-press.com/kaiseki/machine/1156/37691/" target="_blank" rel="noopener">ななプレス 鬼ヶ島チャレンジ</a> ・
+      <a href="https://nana-press.com/kaiseki/machine/1156/37711/" target="_blank" rel="noopener">ななプレス AT終了画面</a> ・
+      <a href="https://p-town.dmm.com/machines/5010" target="_blank" rel="noopener">P-town 戦国コレクション6</a>
+    </p>
+  </footer>
+</main>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+}
+</script>
+</body>
+</html>
