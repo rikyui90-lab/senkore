@@ -78,7 +78,8 @@ tr.hot td.imp{color:var(--c);font-weight:700}
 .note{font-size:13px;color:var(--muted);margin:10px 0 0}
 .cmd{font-family:"IBM Plex Mono",monospace;font-size:13px;background:var(--accent-soft);padding:2px 6px;border-radius:4px;white-space:nowrap}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin:0 0 14px}
-@media (max-width:560px){ .pair td:first-child{white-space:normal} .serif{white-space:normal} }
+.serif.wrap{white-space:normal}
+@media (max-width:560px){ .pair td:first-child{white-space:normal} .serif{white-space:normal} #at th,#at td{padding-inline:5px} #at td.imp{font-size:13px} }
 footer{border-top:1px solid var(--line);margin-top:48px;padding-top:14px;font-size:13px;color:var(--muted)}
 footer a{color:var(--accent)}
 </style>
@@ -89,13 +90,14 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <div class="eyebrow">SMART PACHISLOT / KONAMI</div>
     <h1>スマスロ 戦国コレクション<span class="six">6</span><br>セリフ示唆まとめ</h1>
-    <p>鬼ヶ島チャレンジ中の姉鬼・妹鬼のセリフと、AT終了画面のコナミコマンドで出るボイスの示唆だけをまとめました。</p>
+    <p>鬼ヶ島チャレンジ中の姉鬼・妹鬼のセリフ、AT中のセリフ、AT終了画面のコナミコマンドで出るボイスの示唆だけをまとめました。</p>
   </div>
 </header>
 
 <nav aria-label="目次">
   <div class="wrap">
     <a href="#oni">鬼ヶ島チャレンジ</a>
+    <a href="#at">AT中</a>
     <a href="#end">AT終了画面</a>
   </div>
 </nav>
@@ -129,6 +131,100 @@ footer a{color:var(--accent)}
     </div>
   </section>
 
+  <section id="at">
+    <h2>AT中 <small>JIGENJO RUSH</small></h2>
+    <p class="lead">AT「時幻城ラッシュ」中のセリフで、当該セットの継続率や、秘宝舞闘会の対戦相手・ATシナリオを示唆します。ATシナリオは全12種類あり、シナリオによってセットごとの継続率が変わります。</p>
+
+    <div class="legend">
+      <span><span class="tag" style="background:var(--t-def)"></span>継続率 1% or 100%・対戦相手</span>
+      <span><span class="tag" style="background:var(--t-b)"></span>継続率50%以上</span>
+      <span><span class="tag" style="background:var(--t-heaven)"></span>継続率80%以上</span>
+      <span><span class="tag" style="background:var(--t-strong)"></span>継続率100%</span>
+      <span><span class="tag" style="background:var(--t-top)"></span>ATシナリオ</span>
+    </div>
+
+    <div class="card">
+      <h3>押し順ベル消化時の信長</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>セリフ</th><th>示唆内容</th></tr></thead>
+        <tbody>
+          <tr class="lv-def"><td class="serif">「どきなさいっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif">「止まる気はないわよっ！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif">「どんどん行くわよっ！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">AT中の押し順ベルを消化したときに出る、信長のセリフです。示唆するのは当該セットの継続率です。</p>
+    </div>
+
+    <div class="card">
+      <h3>味方キャラの吹き出しセリフ</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>キャラ</th><th>セリフ</th><th>示唆内容</th></tr></thead>
+        <tbody>
+          <tr class="lv-def"><td class="serif" rowspan="4">信長</td><td class="serif wrap">「ここさえ越えればっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「油断は禁物ねっ！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「良い波がきてるわ！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrap">「絶好調ね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">最上</td><td class="serif wrap">「なんとかここを凌ぐよっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「どっちに転ぶか…！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「良い波きてる！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrap">「絶好調だね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">秀吉</td><td class="serif wrap">「ここを凌げればねぇ」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「五分五分ってやつかねぇ」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「順調順調！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrap">「絶好調だー！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">家康</td><td class="serif wrap">「ここを突破できれば！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「実力は半々って感じだね！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「良い波きてる～♪」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrap">「絶好調ー！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">光秀</td><td class="serif wrap">「これを乗り越えられれば…」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「次は互角の戦いになるかもしれません」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「良い波が来ていますね！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrap">「絶好調ですね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">AT中に、味方キャラの吹き出しつきセリフ演出が出たときの示唆です。示唆するのは当該セットの継続率です。</p>
+    </div>
+
+    <div class="card">
+      <h3>敵キャラのセリフ</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>キャラ</th><th>セリフ</th><th>示唆内容</th></tr></thead>
+        <tbody>
+          <tr class="lv-def"><td class="serif" rowspan="3">義元</td><td class="serif wrap">「さっさと決着をつけますわよ！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が義元 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「今から楽しみですわっ！」</td><td class="imp"><span class="tag"></span>対戦相手が義元 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「ちょっと…まだ準備が…」</td><td class="imp"><span class="tag"></span>対戦相手が義元 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">早雲</td><td class="serif wrap">「相手にとって不足はなし！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が早雲 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「さあっ本気で楽しみましょう！」</td><td class="imp"><span class="tag"></span>対戦相手が早雲 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「あれ…メガネメガネ…」</td><td class="imp"><span class="tag"></span>対戦相手が早雲 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">クレオパトラ</td><td class="serif wrap">「ニャッハハハー！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手がクレオパトラ 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「なにして遊ぶニャ〜？」</td><td class="imp"><span class="tag"></span>対戦相手がクレオパトラ ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「ふわぁ〜なんか眠いのニャ…」</td><td class="imp"><span class="tag"></span>対戦相手がクレオパトラ ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">楊貴妃</td><td class="serif wrap">「うん！頑張ろう！よし！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が楊貴妃 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「楽しくいきましょう！」</td><td class="imp"><span class="tag"></span>対戦相手が楊貴妃 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「ど…どどどどうしよう…！」</td><td class="imp"><span class="tag"></span>対戦相手が楊貴妃 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">小野小町</td><td class="serif wrap">「キミがくるのを心待ちにしてるッチ♪」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が小野小町 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrap">「しょうがない…小町が遊んであげる♪」</td><td class="imp"><span class="tag"></span>対戦相手が小野小町 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrap">「おねがい…いまはこないで…」</td><td class="imp"><span class="tag"></span>対戦相手が小野小町 ＋ 継続率80%以上 濃厚</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">AT中に、敵キャラのセリフ演出が出たときの示唆です。秘宝舞闘会の対戦相手がわかり、セリフによっては当該セットの継続率もわかります。</p>
+    </div>
+
+    <div class="card">
+      <h3>秘宝舞闘会の開始時（龍馬）</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>セリフ</th><th>示唆内容</th></tr></thead>
+        <tbody>
+          <tr class="lv-top hot"><td class="serif wrap">「奇妙な夢をこの前見ましてね…ってこんな話をしている場合じゃない？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ7以上 濃厚</td></tr>
+          <tr class="lv-top hot"><td class="serif wrap">「偶然この前古い友人と出会いましてね…ってそんな話はどうでもいい？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ10以上 濃厚</td></tr>
+          <tr class="lv-top hot"><td class="serif wrap">「何やら夢のような時間が訪れる予感が…ってそんな話はどうでもいい？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ12 濃厚</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">秘宝舞闘会は龍馬のセリフから始まります。上のセリフならATシナリオを示唆します。それ以外のセリフは示唆なしです。</p>
+    </div>
+  </section>
+
   <section id="end">
     <h2>AT終了画面 <small>KONAMI COMMAND</small></h2>
     <p class="lead">AT終了画面で <span class="cmd">↑ ↑ ↓ ↓ ← → ← → チャンスボタン</span> を入力するとボイスが流れ、モードや当選周期を示唆します。聞き逃したら十字キーの「↑」をもう一度押すと再確認できます。</p>
@@ -157,6 +253,7 @@ footer a{color:var(--accent)}
     <p>参考：
       <a href="https://1geki.jp/slot/l_sencolle6/45/" target="_blank" rel="noopener">1geki 鬼ヶ島チャレンジ</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37691/" target="_blank" rel="noopener">ななプレス 鬼ヶ島チャレンジ</a> ・
+      <a href="https://nana-press.com/kaiseki/machine/1156/37881/" target="_blank" rel="noopener">ななプレス セリフ演出（AT中）</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37711/" target="_blank" rel="noopener">ななプレス AT終了画面</a> ・
       <a href="https://p-town.dmm.com/machines/5010" target="_blank" rel="noopener">P-town 戦国コレクション6</a>
     </p>
