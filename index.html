@@ -50,10 +50,22 @@ h1{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(28px
 h1 .six{color:var(--accent)}
 header p{margin:0;opacity:.85;max-width:60ch}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:8px;flex-wrap:wrap;padding-block:10px}
+nav .navin{display:flex;gap:8px;flex-wrap:wrap;padding:10px 16px}
 nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;background:var(--accent-soft)}
 nav a:hover,nav a:focus-visible{background:var(--accent);color:#fff;outline:none}
 main{padding-bottom:56px}
+.layout{max-width:960px;margin:0 auto}
+main{padding-inline:16px}
+nav a[aria-current="true"]{background:var(--accent);color:#fff;box-shadow:inset 4px 0 0 var(--head-ink)}
+@media (min-width:900px){
+  .layout{max-width:1240px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px;padding-inline:16px;align-items:start}
+  nav{position:sticky;top:16px;z-index:5;border:1px solid var(--line);border-radius:12px;margin-top:40px}
+  nav .navin{display:flex;flex-direction:column;gap:6px;flex-wrap:nowrap;padding:12px}
+  nav a{font-size:16px;border-radius:8px;padding:10px 12px;min-height:44px;display:flex;align-items:center}
+  main{padding-inline:0;max-width:960px}
+  section{scroll-margin-top:16px}
+}
+
 section{margin-top:40px;scroll-margin-top:64px}
 h2{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:24px;margin:0 0 4px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 h2 small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.1em}
@@ -130,8 +142,9 @@ footer a{color:var(--accent)}
   </div>
 </header>
 
+<div class="layout">
 <nav aria-label="目次">
-  <div class="wrap">
+  <div class="navin">
     <a href="#oni">鬼ヶ島チャレンジ</a>
     <a href="#at">AT中</a>
     <a href="#scenario">ATシナリオ</a>
@@ -139,7 +152,7 @@ footer a{color:var(--accent)}
   </div>
 </nav>
 
-<main class="wrap">
+<main>
 
   <section id="oni">
     <h2>鬼ヶ島チャレンジ <small>ONIGASHIMA</small></h2>
@@ -516,10 +529,26 @@ footer a{color:var(--accent)}
     </p>
   </footer>
 </main>
+</div>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
 }
+</script>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav a[href^="#"]'));
+  if(!('IntersectionObserver' in window)||!links.length)return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){
+        if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+      });
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)io.observe(t);});
+})();
 </script>
 </body>
 </html>
