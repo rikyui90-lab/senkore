@@ -78,10 +78,44 @@ tr.hot td.imp{color:var(--c);font-weight:700}
 .note{font-size:13px;color:var(--muted);margin:10px 0 0}
 .cmd{font-family:"IBM Plex Mono",monospace;font-size:13px;background:var(--accent-soft);padding:2px 6px;border-radius:4px;white-space:nowrap}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin:0 0 14px}
-.serif.wrap{white-space:normal}
+.serif.wrapok{white-space:normal}
 @media (max-width:560px){ .pair td:first-child{white-space:normal} .serif{white-space:normal} #at th,#at td{padding-inline:5px} #at td.imp{font-size:13px} }
 footer{border-top:1px solid var(--line);margin-top:48px;padding-top:14px;font-size:13px;color:var(--muted)}
 footer a{color:var(--accent)}
+.rate{text-align:center;font-weight:700;font-size:16px;color:#fff;padding:8px 0;min-width:0;border-left:1px solid rgba(0,0,0,.3)}
+.rate.r1{background:#6e6a70}.rate.r10{background:#2c6cd6}.rate.r50{background:#1f7a3a}.rate.r80{background:#c2334a}.rate.r100{background:#ffd24a;color:#2b1f00}
+.chip{display:inline-block;min-width:2.4em;text-align:center;font-weight:700;color:#fff;border-radius:4px;padding:1px 6px;margin-right:6px}
+.chip.r1{background:#6e6a70}.chip.r10{background:#2c6cd6}.chip.r50{background:#1f7a3a}.chip.r80{background:#c2334a}.chip.r100{background:#ffd24a;color:#2b1f00}
+.scn-table{table-layout:fixed;width:100%}
+.scn-table th,.scn-table td{padding:6px 0;font-size:16px}
+.scn-table thead th{text-align:center;white-space:normal;font-size:14px;line-height:1.3;padding:4px 0}
+.scn-table thead th:first-child{text-align:left;width:6.2em}
+.scn-table thead th:last-child{width:3.6em}
+.scn-table .clear{text-align:right;font-weight:700;white-space:nowrap;font-size:15px;padding-left:4px}
+.scn-table tbody th{text-align:left;font-weight:700;line-height:1.35;padding-right:4px}
+.head-note{margin:0 0 8px}
+.no{font-family:"IBM Plex Mono",monospace;color:var(--accent)}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.bar-head{display:flex;justify-content:space-between;gap:8px;font-size:16px;line-height:1.5}
+.bar-head b{font-family:"IBM Plex Mono",monospace}
+.meter{display:block;height:10px;border-radius:999px;background:var(--line);margin-top:4px;overflow:hidden}
+.meter>span{display:block;height:100%;background:var(--accent);border-radius:999px}
+.sub-h{font-size:18px;margin:24px 0 4px}
+.scn{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-top:10px}
+.scn summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;padding:12px 14px;min-height:44px;font-size:16px}
+.scn summary::-webkit-details-marker{display:none}
+.scn summary::after{content:"▼";font-size:12px;color:var(--muted);margin-left:auto}
+.scn[open] summary::after{content:"▲"}
+.scn .sum{color:var(--muted);font-size:14px}
+.scn summary:focus-visible{outline:3px solid #ffd43d;outline-offset:2px}
+.scn-body{padding:0 14px 14px;font-size:16px}
+.scn-body p{margin:0 0 10px}
+.scn-body dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0 0 10px}
+.scn-body dt{color:var(--muted);font-size:14px}
+.scn-body dd{margin:0;font-weight:700}
+.hint-title{font-weight:700;margin:0 0 4px}
+.hints{margin:0;padding-left:1.2em;font-size:15px}
+@media (max-width:560px){ #scenario .card{padding:12px 12px} }
 </style>
 </head>
 <body>
@@ -90,7 +124,7 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <div class="eyebrow">SMART PACHISLOT / KONAMI</div>
     <h1>スマスロ 戦国コレクション<span class="six">6</span><br>セリフ示唆まとめ</h1>
-    <p>鬼ヶ島チャレンジ中の姉鬼・妹鬼のセリフ、AT中のセリフ、AT終了画面のコナミコマンドで出るボイスの示唆だけをまとめました。</p>
+    <p>鬼ヶ島チャレンジ中の姉鬼・妹鬼のセリフ、AT中のセリフ、ATシナリオ(継続率・選択率・詳細)、AT終了画面のコナミコマンドで出るボイスの示唆だけをまとめました。</p>
   </div>
 </header>
 
@@ -98,6 +132,7 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <a href="#oni">鬼ヶ島チャレンジ</a>
     <a href="#at">AT中</a>
+    <a href="#scenario">ATシナリオ</a>
     <a href="#end">AT終了画面</a>
   </div>
 </nav>
@@ -161,26 +196,26 @@ footer a{color:var(--accent)}
       <div class="tbl"><table>
         <thead><tr><th>キャラ</th><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
-          <tr class="lv-def"><td class="serif" rowspan="4">信長</td><td class="serif wrap">「ここさえ越えればっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「油断は禁物ねっ！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「良い波がきてるわ！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
-          <tr class="lv-strong hot"><td class="serif wrap">「絶好調ね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="4">最上</td><td class="serif wrap">「なんとかここを凌ぐよっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「どっちに転ぶか…！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「良い波きてる！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
-          <tr class="lv-strong hot"><td class="serif wrap">「絶好調だね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="4">秀吉</td><td class="serif wrap">「ここを凌げればねぇ」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「五分五分ってやつかねぇ」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「順調順調！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
-          <tr class="lv-strong hot"><td class="serif wrap">「絶好調だー！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="4">家康</td><td class="serif wrap">「ここを突破できれば！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「実力は半々って感じだね！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「良い波きてる～♪」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
-          <tr class="lv-strong hot"><td class="serif wrap">「絶好調ー！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="4">光秀</td><td class="serif wrap">「これを乗り越えられれば…」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「次は互角の戦いになるかもしれません」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「良い波が来ていますね！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
-          <tr class="lv-strong hot"><td class="serif wrap">「絶好調ですね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">信長</td><td class="serif wrapok">「ここさえ越えればっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「油断は禁物ねっ！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「良い波がきてるわ！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrapok">「絶好調ね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">最上</td><td class="serif wrapok">「なんとかここを凌ぐよっ！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「どっちに転ぶか…！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「良い波きてる！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrapok">「絶好調だね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">秀吉</td><td class="serif wrapok">「ここを凌げればねぇ」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「五分五分ってやつかねぇ」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「順調順調！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrapok">「絶好調だー！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">家康</td><td class="serif wrapok">「ここを突破できれば！」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「実力は半々って感じだね！」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「良い波きてる～♪」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrapok">「絶好調ー！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="4">光秀</td><td class="serif wrapok">「これを乗り越えられれば…」</td><td class="imp"><span class="tag"></span>継続率 1% or 100%</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「次は互角の戦いになるかもしれません」</td><td class="imp"><span class="tag"></span>継続率 50%以上</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「良い波が来ていますね！」</td><td class="imp"><span class="tag"></span>継続率 80%以上</td></tr>
+          <tr class="lv-strong hot"><td class="serif wrapok">「絶好調ですね！」</td><td class="imp"><span class="tag"></span>継続率 100%</td></tr>
         </tbody>
       </table></div>
       <p class="note">AT中に、味方キャラの吹き出しつきセリフ演出が出たときの示唆です。示唆するのは当該セットの継続率です。</p>
@@ -191,21 +226,21 @@ footer a{color:var(--accent)}
       <div class="tbl"><table>
         <thead><tr><th>キャラ</th><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
-          <tr class="lv-def"><td class="serif" rowspan="3">義元</td><td class="serif wrap">「さっさと決着をつけますわよ！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が義元 濃厚</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「今から楽しみですわっ！」</td><td class="imp"><span class="tag"></span>対戦相手が義元 ＋ 継続率50%以上 濃厚</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「ちょっと…まだ準備が…」</td><td class="imp"><span class="tag"></span>対戦相手が義元 ＋ 継続率80%以上 濃厚</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="3">早雲</td><td class="serif wrap">「相手にとって不足はなし！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が早雲 濃厚</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「さあっ本気で楽しみましょう！」</td><td class="imp"><span class="tag"></span>対戦相手が早雲 ＋ 継続率50%以上 濃厚</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「あれ…メガネメガネ…」</td><td class="imp"><span class="tag"></span>対戦相手が早雲 ＋ 継続率80%以上 濃厚</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="3">クレオパトラ</td><td class="serif wrap">「ニャッハハハー！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手がクレオパトラ 濃厚</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「なにして遊ぶニャ〜？」</td><td class="imp"><span class="tag"></span>対戦相手がクレオパトラ ＋ 継続率50%以上 濃厚</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「ふわぁ〜なんか眠いのニャ…」</td><td class="imp"><span class="tag"></span>対戦相手がクレオパトラ ＋ 継続率80%以上 濃厚</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="3">楊貴妃</td><td class="serif wrap">「うん！頑張ろう！よし！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が楊貴妃 濃厚</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「楽しくいきましょう！」</td><td class="imp"><span class="tag"></span>対戦相手が楊貴妃 ＋ 継続率50%以上 濃厚</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「ど…どどどどうしよう…！」</td><td class="imp"><span class="tag"></span>対戦相手が楊貴妃 ＋ 継続率80%以上 濃厚</td></tr>
-          <tr class="lv-def"><td class="serif" rowspan="3">小野小町</td><td class="serif wrap">「キミがくるのを心待ちにしてるッチ♪」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が小野小町 濃厚</td></tr>
-          <tr class="lv-b"><td class="serif wrap">「しょうがない…小町が遊んであげる♪」</td><td class="imp"><span class="tag"></span>対戦相手が小野小町 ＋ 継続率50%以上 濃厚</td></tr>
-          <tr class="lv-heaven"><td class="serif wrap">「おねがい…いまはこないで…」</td><td class="imp"><span class="tag"></span>対戦相手が小野小町 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">義元</td><td class="serif wrapok">「さっさと決着をつけますわよ！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が義元 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「今から楽しみですわっ！」</td><td class="imp"><span class="tag"></span>対戦相手が義元 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「ちょっと…まだ準備が…」</td><td class="imp"><span class="tag"></span>対戦相手が義元 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">早雲</td><td class="serif wrapok">「相手にとって不足はなし！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が早雲 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「さあっ本気で楽しみましょう！」</td><td class="imp"><span class="tag"></span>対戦相手が早雲 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「あれ…メガネメガネ…」</td><td class="imp"><span class="tag"></span>対戦相手が早雲 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">クレオパトラ</td><td class="serif wrapok">「ニャッハハハー！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手がクレオパトラ 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「なにして遊ぶニャ〜？」</td><td class="imp"><span class="tag"></span>対戦相手がクレオパトラ ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「ふわぁ〜なんか眠いのニャ…」</td><td class="imp"><span class="tag"></span>対戦相手がクレオパトラ ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">楊貴妃</td><td class="serif wrapok">「うん！頑張ろう！よし！」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が楊貴妃 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「楽しくいきましょう！」</td><td class="imp"><span class="tag"></span>対戦相手が楊貴妃 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「ど…どどどどうしよう…！」</td><td class="imp"><span class="tag"></span>対戦相手が楊貴妃 ＋ 継続率80%以上 濃厚</td></tr>
+          <tr class="lv-def"><td class="serif" rowspan="3">小野小町</td><td class="serif wrapok">「キミがくるのを心待ちにしてるッチ♪」</td><td class="imp"><span class="tag"></span>秘宝舞闘会の対戦相手が小野小町 濃厚</td></tr>
+          <tr class="lv-b"><td class="serif wrapok">「しょうがない…小町が遊んであげる♪」</td><td class="imp"><span class="tag"></span>対戦相手が小野小町 ＋ 継続率50%以上 濃厚</td></tr>
+          <tr class="lv-heaven"><td class="serif wrapok">「おねがい…いまはこないで…」</td><td class="imp"><span class="tag"></span>対戦相手が小野小町 ＋ 継続率80%以上 濃厚</td></tr>
         </tbody>
       </table></div>
       <p class="note">AT中に、敵キャラのセリフ演出が出たときの示唆です。秘宝舞闘会の対戦相手がわかり、セリフによっては当該セットの継続率もわかります。<br>小野小町の「しょうがない…小町が遊んであげる♪」は、ななプレスでは継続率50%以上と書かれていますが、P-townには継続率の記載がありません。ほかのキャラは、2つ目のセリフがどれも継続率50%以上なので、ここでは50%以上としています。</p>
@@ -216,13 +251,232 @@ footer a{color:var(--accent)}
       <div class="tbl"><table>
         <thead><tr><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
-          <tr class="lv-top hot"><td class="serif wrap">「奇妙な夢をこの前見ましてね…ってこんな話をしている場合じゃない？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ7以上 濃厚</td></tr>
-          <tr class="lv-top hot"><td class="serif wrap">「偶然この前古い友人と出会いましてね…ってそんな話はどうでもいい？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ10以上 濃厚</td></tr>
-          <tr class="lv-top hot"><td class="serif wrap">「何やら夢のような時間が訪れる予感が…ってそんな話はどうでもいい？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ12 濃厚</td></tr>
+          <tr class="lv-top hot"><td class="serif wrapok">「奇妙な夢をこの前見ましてね…ってこんな話をしている場合じゃない？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ7以上 濃厚</td></tr>
+          <tr class="lv-top hot"><td class="serif wrapok">「偶然この前古い友人と出会いましてね…ってそんな話はどうでもいい？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ10以上 濃厚</td></tr>
+          <tr class="lv-top hot"><td class="serif wrapok">「何やら夢のような時間が訪れる予感が…ってそんな話はどうでもいい？おっとこりゃ失礼♪」</td><td class="imp"><span class="tag"></span>ATシナリオ12 濃厚</td></tr>
         </tbody>
       </table></div>
       <p class="note">秘宝舞闘会は龍馬のセリフから始まります。上のセリフならATシナリオを示唆します。それ以外のセリフは示唆なしです。</p>
     </div>
+  </section>
+
+  <section id="scenario">
+    <h2>ATシナリオ <small>SCENARIO</small></h2>
+    <p class="lead">AT「時幻城ラッシュ」には、全12種類のATシナリオがあります。シナリオによって、セットごとの継続率(秘宝舞闘会で、次のセットへ進める確率)が決まります。5セット目まで突破すると、最終決戦へ進みます。全設定共通です。</p>
+
+    <div class="legend">
+      <span><span class="chip r1">1</span>1%</span>
+      <span><span class="chip r10">10</span>10%</span>
+      <span><span class="chip r50">50</span>50%</span>
+      <span><span class="chip r80">80</span>80%</span>
+      <span><span class="chip r100">100</span>100%</span>
+    </div>
+
+    <div class="card">
+      <h3>セットごとの継続率(%)</h3>
+      <p class="note head-note">見出しの1〜5は、1〜5セット目。「突破率」は、5セット突破率(計算値)です。</p>
+      <div class="tbl"><table class="scn-table">
+        <thead><tr><th scope="col">シナリオ</th><th scope="col" abbr="1セット目">1</th><th scope="col" abbr="2セット目">2</th><th scope="col" abbr="3セット目">3</th><th scope="col" abbr="4セット目">4</th><th scope="col" abbr="5セット目">5</th><th scope="col">突破率</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="serif wrapok"><span class="no">①</span><br>波乱</th><td class="rate r10">10</td><td class="rate r80">80</td><td class="rate r10">10</td><td class="rate r80">80</td><td class="rate r50">50</td><td class="clear">0.32%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">②</span><br>大波乱</th><td class="rate r80">80</td><td class="rate r10">10</td><td class="rate r80">80</td><td class="rate r10">10</td><td class="rate r50">50</td><td class="clear">0.32%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">③</span><br>追い込み</th><td class="rate r50">50</td><td class="rate r10">10</td><td class="rate r50">50</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="clear">1.6%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">④</span><br>怒涛</th><td class="rate r80">80</td><td class="rate r10">10</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r80">80</td><td class="clear">1.6%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑤</span><br>成り上がり</th><td class="rate r10">10</td><td class="rate r50">50</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="clear">2.6%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑥</span><br>神成り上がり</th><td class="rate r1">1</td><td class="rate r100">100</td><td class="rate r100">100</td><td class="rate r100">100</td><td class="rate r100">100</td><td class="clear">1%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑦</span><br>先手</th><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="clear">8%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑧</span><br>超先手</th><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="clear">12.8%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑨</span><br>超成り上がり</th><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="clear">8%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑩</span><br>安定</th><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="rate r50">50</td><td class="clear">3.1%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑪</span><br>超安定</th><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="rate r80">80</td><td class="clear">32.8%</td></tr>
+          <tr><th scope="row" class="serif wrapok"><span class="no">⑫</span><br>ED確定</th><td class="rate r100">100</td><td class="rate r100">100</td><td class="rate r100">100</td><td class="rate r100">100</td><td class="rate r100">100</td><td class="clear">100.0%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">数字は、ATシナリオ表(ゲーム中に、AT中の待機状態でチャンスボタンを押すと出る表)をもとにしています。「5セット突破率」は、1〜5セット目の継続率を掛け合わせた計算値です。自力ストック(劉備、ロボニャンドライブ、卑弥呼など)や、救済機能は含まないので、実際は、これより高くなります。</p>
+    </div>
+
+    <div class="card">
+      <h3>ATシナリオの選択率</h3>
+      <ul class="bars">
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">①</span> 波乱</span><b>30.8%</b></div><span class="meter" aria-hidden="true"><span style="width:100.0%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">②</span> 大波乱</span><b>15.3%</b></div><span class="meter" aria-hidden="true"><span style="width:49.7%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">③</span> 追い込み</span><b>9.1%</b></div><span class="meter" aria-hidden="true"><span style="width:29.5%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">④</span> 怒涛</span><b>14.2%</b></div><span class="meter" aria-hidden="true"><span style="width:46.1%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑤</span> 成り上がり</span><b>4.3%</b></div><span class="meter" aria-hidden="true"><span style="width:14.0%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑥</span> 神成り上がり</span><b>4.4%</b></div><span class="meter" aria-hidden="true"><span style="width:14.3%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑦</span> 先手</span><b>5.8%</b></div><span class="meter" aria-hidden="true"><span style="width:18.8%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑧</span> 超先手</span><b>5.8%</b></div><span class="meter" aria-hidden="true"><span style="width:18.8%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑨</span> 超成り上がり</span><b>2.9%</b></div><span class="meter" aria-hidden="true"><span style="width:9.4%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑩</span> 安定</span><b>4.3%</b></div><span class="meter" aria-hidden="true"><span style="width:14.0%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑪</span> 超安定</span><b>2.1%</b></div><span class="meter" aria-hidden="true"><span style="width:6.8%"></span></span></li>
+          <li><div class="bar-head"><span class="serif wrapok"><span class="no">⑫</span> ED確定</span><b>1.0%</b></div><span class="meter" aria-hidden="true"><span style="width:3.2%"></span></span></li>
+      </ul>
+      <p class="note">全設定共通です。1セット目の継続率が50%以上のシナリオは、合わせて60.5%、80%以上のシナリオは、合わせて44.2%です。⑦先手以上は高継続シナリオで、選択率の合計は、21.9%です。</p>
+    </div>
+
+    <div class="card">
+      <h3>救済機能</h3>
+      <p>低継続のシナリオ(⑥神成り上がり以下)が連続で選ばれると、高継続のシナリオ(⑦先手以上)に書き換わることがあります。偶数回のAT初当たりで起こりやすく、救済が起こるAT初当たり回数の振り分けは、2・4・6・8回までが各20.3%、10・12回までが各9.4%です。書き換わるときの選択率は、⑦先手 20.3%、⑧超先手 20.3%、⑨超成り上がり 9.8%、⑩安定 30.0%、⑪超安定 9.8%、⑫ED確定 9.8%です。</p>
+    </div>
+
+    <h3 class="sub-h">シナリオごとの詳細</h3>
+    <p class="note">シナリオの名前を押すと、詳しい内容が開きます。「出る可能性のある示唆」は、出典の「〇以上」「奇数」などの条件を、各シナリオに当てはめたものです。</p>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">①</span> 波乱</span><span class="sum">選択率 30.8%・低継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1・3セット目が10%、2・4セット目が80%と、低いセットと高いセットが交互に来る形。5セット目は50%。1セット目を突破できないと、そこで終わる。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>10% → 80% → 10% → 80% → 50% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>0.32%</dd>
+          <dt>選択率</dt><dd>30.8%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">②</span> 大波乱</span><span class="sum">選択率 15.3%・低継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1・3セット目が80%、2・4セット目が10%と、波乱を逆にした形。5セット目は50%。2セット目と4セット目が山場になる。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>80% → 10% → 80% → 10% → 50% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>0.32%</dd>
+          <dt>選択率</dt><dd>15.3%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 信長・秀吉(偶数シナリオ)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">③</span> 追い込み</span><span class="sum">選択率 9.1%・低継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1・3セット目が50%、2セット目が10%。後半の4・5セット目が80%で、前半を乗り越えられれば、終盤は強い。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>50% → 10% → 50% → 80% → 80% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>1.6%</dd>
+          <dt>選択率</dt><dd>9.1%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">④</span> 怒涛</span><span class="sum">選択率 14.2%・低継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1セット目が80%のあと、2セット目が10%に落ちる。3・4セット目は50%、5セット目は80%。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>80% → 10% → 50% → 50% → 80% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>1.6%</dd>
+          <dt>選択率</dt><dd>14.2%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・秀吉(偶数シナリオ)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑤</span> 成り上がり</span><span class="sum">選択率 4.3%・低継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1セット目だけ10%で、2セット目が50%、3〜5セット目が80%と、あとになるほど上がる形。1セット目が最大の山場。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>10% → 50% → 80% → 80% → 80% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>2.6%</dd>
+          <dt>選択率</dt><dd>4.3%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑥</span> 神成り上がり</span><span class="sum">選択率 4.4%・低継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1セット目は1%で、ほとんど突破できない。突破できれば、2〜5セット目はすべて100%で、5セット目まで進む。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>1% → 100% → 100% → 100% → 100% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>1%</dd>
+          <dt>選択率</dt><dd>4.4%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: ガチャ・ゴザル(ATシナリオ6)</li><li>扉絵: 信長・秀吉(偶数シナリオ)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑦</span> 先手</span><span class="sum">選択率 5.8%・高継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1・2セット目が80%、3〜5セット目が50%。前半が強く、後半は50%。高継続シナリオの入り口。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>80% → 80% → 50% → 50% → 50% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>8%</dd>
+          <dt>選択率</dt><dd>5.8%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li><li>AT突入時のタイトル映像: コレ丸が出る(ATシナリオ7以上)</li><li>龍馬「奇妙な夢をこの前見ましてね…」(ATシナリオ7以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑧</span> 超先手</span><span class="sum">選択率 5.8%・高継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1〜3セット目が80%、4・5セット目が50%。前半の3セットが強い。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>80% → 80% → 80% → 50% → 50% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>12.8%</dd>
+          <dt>選択率</dt><dd>5.8%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・秀吉(偶数シナリオ)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li><li>扉絵: 信長・光秀(ATシナリオ8以上)</li><li>AT突入時のタイトル映像: コレ丸が出る(ATシナリオ7以上)</li><li>龍馬「奇妙な夢をこの前見ましてね…」(ATシナリオ7以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑨</span> 超成り上がり</span><span class="sum">選択率 2.9%・高継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>1〜3セット目が50%、4・5セット目が80%。後半に向けて上がる形。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>50% → 50% → 50% → 80% → 80% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>8%</dd>
+          <dt>選択率</dt><dd>2.9%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li><li>扉絵: 信長・光秀(ATシナリオ8以上)</li><li>AT突入時のタイトル映像: コレ丸が出る(ATシナリオ7以上)</li><li>龍馬「奇妙な夢をこの前見ましてね…」(ATシナリオ7以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑩</span> 安定</span><span class="sum">選択率 4.3%・高継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>5セットすべてが50%。ずっと同じ確率で、読みやすい形。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>50% → 50% → 50% → 50% → 50% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>3.1%</dd>
+          <dt>選択率</dt><dd>4.3%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・秀吉(偶数シナリオ)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li><li>扉絵: 信長・光秀(ATシナリオ8以上)</li><li>扉絵: 味方キャラ4人(ATシナリオ10 or 12)</li><li>AT突入時のタイトル映像: コレ丸が出る(ATシナリオ7以上)</li><li>龍馬「奇妙な夢をこの前見ましてね…」(ATシナリオ7以上)</li><li>龍馬「偶然この前古い友人と出会いましてね…」(ATシナリオ10以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑪</span> 超安定</span><span class="sum">選択率 2.1%・高継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>5セットすべてが80%。安定して高い。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>80% → 80% → 80% → 80% → 80% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>32.8%</dd>
+          <dt>選択率</dt><dd>2.1%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li><li>扉絵: 信長・光秀(ATシナリオ8以上)</li><li>扉絵: 敵キャラ5人(ATシナリオ11 or 12)</li><li>AT突入時のタイトル映像: コレ丸が出る(ATシナリオ7以上)</li><li>龍馬「奇妙な夢をこの前見ましてね…」(ATシナリオ7以上)</li><li>龍馬「偶然この前古い友人と出会いましてね…」(ATシナリオ10以上)</li></ul>
+      </div>
+    </details>
+    <details class="scn">
+      <summary><span class="serif wrapok"><span class="no">⑫</span> ED確定</span><span class="sum">選択率 1.0%・高継続シナリオ</span></summary>
+      <div class="scn-body">
+        <p>5セットすべてが100%。5セット目まで確定で、最終決戦へ進む。</p>
+        <dl>
+          <dt>セットごとの継続率</dt><dd>100% → 100% → 100% → 100% → 100% →(6セット目以降は最終決戦)</dd>
+          <dt>5セット突破率(計算値)</dt><dd>100.0%</dd>
+          <dt>選択率</dt><dd>1.0%</dd>
+        </dl>
+        <p class="hint-title">このシナリオで出る可能性のある示唆</p>
+        <ul class="hints"><li>扉絵: 敵キャラ1人(ATシナリオ3以上)</li><li>扉絵: 信長・最上(奇数シナリオ or ⑫)</li><li>扉絵: 信長・家康(ATシナリオ5以上)</li><li>扉絵: 信長・光秀(ATシナリオ8以上)</li><li>扉絵: 味方キャラ4人(ATシナリオ10 or 12)</li><li>扉絵: 敵キャラ5人(ATシナリオ11 or 12)</li><li>扉絵: デフォルメキャラ1人(ATシナリオ12)</li><li>AT突入時のタイトル映像: コレ丸が出る(ATシナリオ7以上)</li><li>龍馬「奇妙な夢をこの前見ましてね…」(ATシナリオ7以上)</li><li>龍馬「偶然この前古い友人と出会いましてね…」(ATシナリオ10以上)</li><li>龍馬「何やら夢のような時間が訪れる予感が…」(ATシナリオ12)</li><li>闇アリス「大人しくなさい小町」(ATシナリオ12)</li></ul>
+      </div>
+    </details>
   </section>
 
   <section id="end">
@@ -254,6 +508,7 @@ footer a{color:var(--accent)}
       <a href="https://1geki.jp/slot/l_sencolle6/45/" target="_blank" rel="noopener">1geki 鬼ヶ島チャレンジ</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37691/" target="_blank" rel="noopener">ななプレス 鬼ヶ島チャレンジ</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37881/" target="_blank" rel="noopener">ななプレス セリフ演出（AT中）</a> ・
+      <a href="https://nana-press.com/kaiseki/machine/1156/37697/" target="_blank" rel="noopener">ななプレス ATシナリオの詳細</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37711/" target="_blank" rel="noopener">ななプレス AT終了画面</a> ・
       <a href="https://p-town.dmm.com/machines/5010" target="_blank" rel="noopener">P-town 戦国コレクション6</a>
     </p>
