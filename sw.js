@@ -1,5 +1,5 @@
 // オフラインでも開けるように、アプリ本体を事前キャッシュする
-const CACHE = 'sencolle6-v11';
+const CACHE = 'sencolle6-v12';
 const ASSETS = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -14,14 +14,14 @@ self.addEventListener('activate', e => {
   );
 });
 
-// キャッシュ優先。なければ取得してキャッシュに追加（Google Fonts も含む）
+// ネットワーク優先。つながらないときだけキャッシュを使う（更新がすぐ届くように）
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then(hit => hit || fetch(e.request).then(res => {
+    fetch(e.request).then(res => {
       const copy = res.clone();
       caches.open(CACHE).then(c => c.put(e.request, copy));
       return res;
-    }))
+    }).catch(() => caches.match(e.request))
   );
 });
