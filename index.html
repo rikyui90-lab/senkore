@@ -59,7 +59,7 @@ main{padding-inline:16px}
 nav a[aria-current="true"]{background:var(--accent);color:#fff;box-shadow:inset 4px 0 0 var(--head-ink)}
 @media (min-width:900px){
   .layout{max-width:1240px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px;padding-inline:16px;align-items:start}
-  nav{position:sticky;top:16px;z-index:5;border:1px solid var(--line);border-radius:12px;margin-top:40px}
+  nav{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;z-index:5;border:1px solid var(--line);border-radius:12px;margin-top:40px}
   nav .navin{display:flex;flex-direction:column;gap:6px;flex-wrap:nowrap;padding:12px}
   nav a{font-size:16px;border-radius:8px;padding:10px 12px;min-height:44px;display:flex;align-items:center}
   main{padding-inline:0;max-width:960px}
@@ -130,6 +130,15 @@ footer a{color:var(--accent)}
 .scn-body dd{margin:0;font-weight:700}
 .hint-title{font-weight:700;margin:0 0 4px}
 .hints{margin:0;padding-left:1.2em;font-size:15px}
+.subs{display:none}
+h3[id]{scroll-margin-top:72px}
+@media (min-width:900px){
+  .subs{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 14px;padding-left:10px;border-left:2px solid var(--line)}
+  nav a.sublink{font-size:16px;font-weight:400;background:none;padding:6px 10px;min-height:44px;border-radius:6px}
+  nav a.sublink:hover,nav a.sublink:focus-visible{background:var(--accent);color:#fff}
+  nav a.sublink[aria-current="true"]{background:var(--accent-soft);color:var(--ink);font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
+  h3[id]{scroll-margin-top:16px}
+}
 @media (max-width:560px){ #scenario .card{padding:12px 12px} }
 </style>
 </head>
@@ -148,7 +157,20 @@ footer a{color:var(--accent)}
   <div class="navin">
     <a href="#oni">鬼ヶ島チャレンジ</a>
     <a href="#at">AT中</a>
+    <div class="subs">
+      <a class="sublink" href="#at-bell">押し順ベル（信長）</a>
+      <a class="sublink" href="#at-ally">味方キャラのセリフ</a>
+      <a class="sublink" href="#at-enemy">敵キャラのセリフ</a>
+      <a class="sublink" href="#at-ryoma">開始時の龍馬</a>
+      <a class="sublink" href="#at-tobira">扉絵</a>
+    </div>
     <a href="#scenario">ATシナリオ</a>
+    <div class="subs">
+      <a class="sublink" href="#sc-rate">継続率</a>
+      <a class="sublink" href="#sc-select">選択率</a>
+      <a class="sublink" href="#sc-rescue">救済機能</a>
+      <a class="sublink" href="#sc-detail">シナリオごとの詳細</a>
+    </div>
     <a href="#end">AT終了画面</a>
   </div>
 </nav>
@@ -195,7 +217,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>押し順ベル消化時の信長</h3>
+      <h3 id="at-bell">押し順ベル消化時の信長</h3>
       <div class="tbl"><table>
         <thead><tr><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
@@ -208,7 +230,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>味方キャラの吹き出しセリフ</h3>
+      <h3 id="at-ally">味方キャラの吹き出しセリフ</h3>
       <div class="tbl"><table>
         <thead><tr><th>キャラ</th><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
@@ -238,7 +260,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>敵キャラのセリフ</h3>
+      <h3 id="at-enemy">敵キャラのセリフ</h3>
       <div class="tbl"><table>
         <thead><tr><th>キャラ</th><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
@@ -263,7 +285,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>秘宝舞闘会の開始時（龍馬）</h3>
+      <h3 id="at-ryoma">秘宝舞闘会の開始時（龍馬）</h3>
       <div class="tbl"><table>
         <thead><tr><th>セリフ</th><th>示唆内容</th></tr></thead>
         <tbody>
@@ -276,7 +298,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>ATセット開始画面（扉絵）</h3>
+      <h3 id="at-tobira">ATセット開始画面（扉絵）</h3>
       <div class="tbl"><table>
         <thead><tr><th>扉絵</th><th>示唆内容</th></tr></thead>
         <tbody>
@@ -316,7 +338,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>セットごとの継続率(%)</h3>
+      <h3 id="sc-rate">セットごとの継続率(%)</h3>
       <p class="note head-note">見出しの1〜5は、1〜5セット目。「選択率」は、そのシナリオが選ばれる割合、「突破率」は、5セット突破率(計算値)です。</p>
       <div class="tbl"><table class="scn-table">
         <thead><tr><th scope="col">シナリオ</th><th scope="col" abbr="1セット目">1</th><th scope="col" abbr="2セット目">2</th><th scope="col" abbr="3セット目">3</th><th scope="col" abbr="4セット目">4</th><th scope="col" abbr="5セット目">5</th><th scope="col">選択率</th><th scope="col">突破率</th></tr></thead>
@@ -339,7 +361,7 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>ATシナリオの選択率</h3>
+      <h3 id="sc-select">ATシナリオの選択率</h3>
       <ul class="bars">
           <li><div class="bar-head"><span class="serif wrapok"><span class="no">①</span> 波乱</span><b>30.8%</b></div><span class="meter" aria-hidden="true"><span style="width:100.0%"></span></span></li>
           <li><div class="bar-head"><span class="serif wrapok"><span class="no">②</span> 大波乱</span><b>15.3%</b></div><span class="meter" aria-hidden="true"><span style="width:49.7%"></span></span></li>
@@ -358,11 +380,11 @@ footer a{color:var(--accent)}
     </div>
 
     <div class="card">
-      <h3>救済機能</h3>
+      <h3 id="sc-rescue">救済機能</h3>
       <p>低継続のシナリオ(⑥神成り上がり以下)が連続で選ばれると、高継続のシナリオ(⑦先手以上)に書き換わることがあります。偶数回のAT初当たりで起こりやすく、救済が起こるAT初当たり回数の振り分けは、2・4・6・8回までが各20.3%、10・12回までが各9.4%です。書き換わるときの選択率は、⑦先手 20.3%、⑧超先手 20.3%、⑨超成り上がり 9.8%、⑩安定 30.0%、⑪超安定 9.8%、⑫ED確定 9.8%です。</p>
     </div>
 
-    <h3 class="sub-h">シナリオごとの詳細</h3>
+    <h3 class="sub-h" id="sc-detail">シナリオごとの詳細</h3>
     <p class="note">シナリオの名前を押すと、詳しい内容が開きます。「出る可能性のある示唆」は、出典の「〇以上」「奇数」などの条件を、各シナリオに当てはめたものです。</p>
     <details class="scn">
       <summary><span class="serif wrapok"><span class="no">①</span> 波乱</span><span class="sum">選択率 30.8%・低継続シナリオ</span></summary>
@@ -566,17 +588,29 @@ if ('serviceWorker' in navigator) {
 </script>
 <script>
 (function(){
-  var links=[].slice.call(document.querySelectorAll('nav a[href^="#"]'));
-  if(!('IntersectionObserver' in window)||!links.length)return;
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting)return;
-      links.forEach(function(a){
-        if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+  function group(sel){
+    var items=[].slice.call(document.querySelectorAll(sel)).map(function(a){
+      return {a:a,t:document.querySelector(a.getAttribute('href'))};
+    }).filter(function(x){return x.t;});
+    return items;
+  }
+  var groups=[group('nav a:not(.sublink)'),group('nav a.sublink')];
+  var busy=false;
+  function update(){
+    busy=false;
+    var line=window.innerHeight*0.3;
+    groups.forEach(function(items){
+      var cur=null;
+      items.forEach(function(x){if(x.t.getBoundingClientRect().top<=line)cur=x;});
+      items.forEach(function(x){
+        if(x===cur)x.a.setAttribute('aria-current','true');else x.a.removeAttribute('aria-current');
       });
     });
-  },{rootMargin:'-20% 0px -70% 0px'});
-  links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)io.observe(t);});
+  }
+  function req(){if(!busy){busy=true;requestAnimationFrame(update);}}
+  window.addEventListener('scroll',req,{passive:true});
+  window.addEventListener('resize',req);
+  update();
 })();
 </script>
 </body>
