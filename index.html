@@ -134,6 +134,7 @@ footer a{color:var(--accent)}
 h3[id]{scroll-margin-top:72px}
 @media (min-width:900px){
   .subs{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 14px;padding-left:10px;border-left:2px solid var(--line)}
+  .js .subs:not(.open){display:none}
   nav a.sublink{font-size:16px;font-weight:400;background:none;padding:6px 10px;min-height:44px;border-radius:6px}
   nav a.sublink:hover,nav a.sublink:focus-visible{background:var(--accent);color:#fff}
   nav a.sublink[aria-current="true"]{background:var(--accent-soft);color:var(--ink);font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
@@ -595,10 +596,28 @@ if ('serviceWorker' in navigator) {
     return items;
   }
   var groups=[group('nav a:not(.sublink)'),group('nav a.sublink')];
+  document.documentElement.classList.add('js');
+  var parents=[].slice.call(document.querySelectorAll('nav a:not(.sublink)')).filter(function(a){
+    var n=a.nextElementSibling;return n&&n.classList.contains('subs');
+  });
+  parents.forEach(function(a){
+    a.setAttribute('aria-expanded','false');
+    a.addEventListener('click',function(){openOnly(a);});
+  });
+  function openOnly(cur){
+    parents.forEach(function(a){
+      var on=a===cur;
+      a.setAttribute('aria-expanded',on?'true':'false');
+      a.nextElementSibling.classList.toggle('open',on);
+    });
+  }
   var busy=false;
   function update(){
     busy=false;
     var line=window.innerHeight*0.3;
+    var top=null;
+    groups[0].forEach(function(x){if(x.t.getBoundingClientRect().top<=line)top=x;});
+    openOnly(top?top.a:null);
     groups.forEach(function(items){
       var cur=null;
       items.forEach(function(x){if(x.t.getBoundingClientRect().top<=line)cur=x;});
