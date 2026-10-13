@@ -142,10 +142,11 @@ footer a{color:var(--accent)}
   nav.menu-open .menu-btn .bars::after{bottom:7px;transform:rotate(-45deg)}
   @media (prefers-reduced-motion:reduce){.menu-btn .bars::before,.menu-btn .bars::after{transition:none}}
   .menu-cur{margin-left:auto;font-weight:400;color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-  .js nav .navin{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.35);flex-direction:column;flex-wrap:nowrap;gap:6px;max-height:calc(100vh - 80px);overflow-y:auto;padding:10px 16px 14px}
+  .js nav .navin{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.35);flex-direction:column;flex-wrap:nowrap;gap:6px;max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:10px 16px 14px}
+  html.menu-lock,html.menu-lock body{overflow:hidden}
   .js nav.menu-open .navin{display:flex}
   .js nav.menu-open a{font-size:16px;min-height:44px;display:flex;align-items:center;padding:8px 14px;border-radius:8px}
-  .js nav.menu-open .subs{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 14px;padding-left:10px;border-left:2px solid var(--line)}
+  .js nav.menu-open .subs.open{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 14px;padding-left:10px;border-left:2px solid var(--line)}
   .js nav.menu-open a.sublink{font-weight:400;background:none;padding:6px 10px}
   .js nav.menu-open a.sublink[aria-current="true"]{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent);font-weight:700}
 }
@@ -626,7 +627,13 @@ if ('serviceWorker' in navigator) {
   });
   parents.forEach(function(a){
     a.setAttribute('aria-expanded','false');
-    a.addEventListener('click',function(){
+    a.addEventListener('click',function(e){
+      if(mobile.matches){
+        e.preventDefault();
+        if(a.getAttribute('aria-expanded')==='true'){a.setAttribute('aria-expanded','false');a.nextElementSibling.classList.remove('open');}
+        else{openOnly(a);}
+        return;
+      }
       if(a.getAttribute('aria-expanded')==='true'){a.setAttribute('aria-expanded','false');a.nextElementSibling.classList.remove('open');}
       else{openOnly(a);}
       lastTop=a;
@@ -639,10 +646,11 @@ if ('serviceWorker' in navigator) {
       a.nextElementSibling.classList.toggle('open',on);
     });
   }
+  var mobile=window.matchMedia('(max-width:899px)');
   var navEl=document.querySelector('nav'),btn=navEl.querySelector('.menu-btn'),curEl=navEl.querySelector('.menu-cur');
-  function setMenu(on){navEl.classList.toggle('menu-open',on);btn.setAttribute('aria-expanded',on?'true':'false');}
+  function setMenu(on){if(on){var t=navEl.getBoundingClientRect().top;if(t>0)window.scrollBy(0,t);}navEl.classList.toggle('menu-open',on);document.documentElement.classList.toggle('menu-lock',on);btn.setAttribute('aria-expanded',on?'true':'false');}
   btn.addEventListener('click',function(){setMenu(!navEl.classList.contains('menu-open'));});
-  navEl.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.navin a'))setMenu(false);});
+  navEl.addEventListener('click',function(e){if(!e.defaultPrevented&&e.target.closest&&e.target.closest('.navin a'))setMenu(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&navEl.classList.contains('menu-open')){setMenu(false);btn.focus();}});
   document.addEventListener('click',function(e){if(navEl.classList.contains('menu-open')&&!navEl.contains(e.target))setMenu(false);});
   var busy=false,lastTop=null;
