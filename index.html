@@ -130,6 +130,25 @@ footer a{color:var(--accent)}
 .scn-body dd{margin:0;font-weight:700}
 .hint-title{font-weight:700;margin:0 0 4px}
 .hints{margin:0;padding-left:1.2em;font-size:15px}
+.menu-btn{display:none}
+@media (max-width:899px){
+  .js .menu-btn{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:6px 16px;background:none;border:0;color:var(--ink);font:inherit;font-size:16px;font-weight:700;text-align:left;cursor:pointer}
+  .menu-btn:focus-visible{outline:3px solid #ffd43d;outline-offset:-3px;box-shadow:inset 0 0 0 5px #000}
+  .menu-btn .bars{position:relative;width:22px;height:16px;flex:none;background:linear-gradient(currentColor,currentColor) center/100% 2px no-repeat}
+  .menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .15s}
+  .menu-btn .bars::before{top:0}.menu-btn .bars::after{bottom:0}
+  nav.menu-open .menu-btn .bars{background:none}
+  nav.menu-open .menu-btn .bars::before{top:7px;transform:rotate(45deg)}
+  nav.menu-open .menu-btn .bars::after{bottom:7px;transform:rotate(-45deg)}
+  @media (prefers-reduced-motion:reduce){.menu-btn .bars::before,.menu-btn .bars::after{transition:none}}
+  .menu-cur{margin-left:auto;font-weight:400;color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .js nav .navin{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.35);flex-direction:column;flex-wrap:nowrap;gap:6px;max-height:calc(100vh - 80px);overflow-y:auto;padding:10px 16px 14px}
+  .js nav.menu-open .navin{display:flex}
+  .js nav.menu-open a{font-size:16px;min-height:44px;display:flex;align-items:center;padding:8px 14px;border-radius:8px}
+  .js nav.menu-open .subs{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 14px;padding-left:10px;border-left:2px solid var(--line)}
+  .js nav.menu-open a.sublink{font-weight:400;background:none;padding:6px 10px}
+  .js nav.menu-open a.sublink[aria-current="true"]{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent);font-weight:700}
+}
 .subs{display:none}
 h3[id]{scroll-margin-top:72px}
 @media (min-width:900px){
@@ -155,7 +174,8 @@ h3[id]{scroll-margin-top:72px}
 
 <div class="layout">
 <nav aria-label="目次">
-  <div class="navin">
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="navin"><span class="bars" aria-hidden="true"></span><span>メニュー</span><span class="menu-cur" aria-hidden="true"></span></button>
+  <div class="navin" id="navin">
     <a href="#oni">鬼ヶ島チャレンジ</a>
     <a href="#at">AT中</a>
     <div class="subs">
@@ -615,12 +635,19 @@ if ('serviceWorker' in navigator) {
       a.nextElementSibling.classList.toggle('open',on);
     });
   }
+  var navEl=document.querySelector('nav'),btn=navEl.querySelector('.menu-btn'),curEl=navEl.querySelector('.menu-cur');
+  function setMenu(on){navEl.classList.toggle('menu-open',on);btn.setAttribute('aria-expanded',on?'true':'false');}
+  btn.addEventListener('click',function(){setMenu(!navEl.classList.contains('menu-open'));});
+  navEl.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.navin a'))setMenu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&navEl.classList.contains('menu-open')){setMenu(false);btn.focus();}});
+  document.addEventListener('click',function(e){if(navEl.classList.contains('menu-open')&&!navEl.contains(e.target))setMenu(false);});
   var busy=false,lastTop=null;
   function update(){
     busy=false;
     var line=window.innerHeight*0.3;
     var top=null;
     groups[0].forEach(function(x){if(x.t.getBoundingClientRect().top<=line)top=x;});
+    curEl.textContent=top?top.a.textContent:'';
     if((top?top.a:null)!==lastTop){lastTop=top?top.a:null;openOnly(lastTop);}
     groups.forEach(function(items){
       var cur=null;
