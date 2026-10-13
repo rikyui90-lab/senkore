@@ -143,7 +143,8 @@ footer a{color:var(--accent)}
   @media (prefers-reduced-motion:reduce){.menu-btn .bars::before,.menu-btn .bars::after{transition:none}}
   .menu-cur{margin-left:auto;font-weight:400;color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
   .js nav .navin{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.35);flex-direction:column;flex-wrap:nowrap;gap:6px;max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:10px 16px 14px}
-  html.menu-lock,html.menu-lock body{overflow:hidden}
+  .js nav.menu-open{position:fixed;top:0;left:0;right:0;z-index:20}
+  .menu-backdrop{position:fixed;inset:0;z-index:19;background:rgba(0,0,0,.5);touch-action:none}
   .js nav.menu-open .navin{display:flex}
   .js nav.menu-open a{font-size:16px;min-height:44px;display:flex;align-items:center;padding:8px 14px;border-radius:8px}
   .js nav.menu-open .subs.open{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 14px;padding-left:10px;border-left:2px solid var(--line)}
@@ -648,11 +649,19 @@ if ('serviceWorker' in navigator) {
   }
   var mobile=window.matchMedia('(max-width:899px)');
   var navEl=document.querySelector('nav'),btn=navEl.querySelector('.menu-btn'),curEl=navEl.querySelector('.menu-cur');
-  function setMenu(on){if(on){var t=navEl.getBoundingClientRect().top;if(t>0)window.scrollBy(0,t);}navEl.classList.toggle('menu-open',on);document.documentElement.classList.toggle('menu-lock',on);btn.setAttribute('aria-expanded',on?'true':'false');}
+  var backdrop=document.createElement('div');
+  backdrop.className='menu-backdrop';backdrop.hidden=true;document.body.appendChild(backdrop);
+  backdrop.addEventListener('click',function(){setMenu(false);});
+  function setMenu(on){
+    if(on===navEl.classList.contains('menu-open'))return;
+    if(on){navEl.parentNode.style.paddingTop=navEl.offsetHeight+'px';}
+    else{navEl.parentNode.style.paddingTop='';}
+    backdrop.hidden=!on;
+    navEl.classList.toggle('menu-open',on);btn.setAttribute('aria-expanded',on?'true':'false');}
   btn.addEventListener('click',function(){setMenu(!navEl.classList.contains('menu-open'));});
   navEl.addEventListener('click',function(e){if(!e.defaultPrevented&&e.target.closest&&e.target.closest('.navin a'))setMenu(false);});
+  mobile.addEventListener&&mobile.addEventListener('change',function(){if(!mobile.matches)setMenu(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&navEl.classList.contains('menu-open')){setMenu(false);btn.focus();}});
-  document.addEventListener('click',function(e){if(navEl.classList.contains('menu-open')&&!navEl.contains(e.target))setMenu(false);});
   var busy=false,lastTop=null;
   function update(){
     busy=false;
