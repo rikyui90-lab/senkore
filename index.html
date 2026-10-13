@@ -602,7 +602,11 @@ if ('serviceWorker' in navigator) {
   });
   parents.forEach(function(a){
     a.setAttribute('aria-expanded','false');
-    a.addEventListener('click',function(){openOnly(a);});
+    a.addEventListener('click',function(){
+      if(a.getAttribute('aria-expanded')==='true'){a.setAttribute('aria-expanded','false');a.nextElementSibling.classList.remove('open');}
+      else{openOnly(a);}
+      lastTop=a;
+    });
   });
   function openOnly(cur){
     parents.forEach(function(a){
@@ -611,13 +615,13 @@ if ('serviceWorker' in navigator) {
       a.nextElementSibling.classList.toggle('open',on);
     });
   }
-  var busy=false;
+  var busy=false,lastTop=null;
   function update(){
     busy=false;
     var line=window.innerHeight*0.3;
     var top=null;
     groups[0].forEach(function(x){if(x.t.getBoundingClientRect().top<=line)top=x;});
-    openOnly(top?top.a:null);
+    if((top?top.a:null)!==lastTop){lastTop=top?top.a:null;openOnly(lastTop);}
     groups.forEach(function(items){
       var cur=null;
       items.forEach(function(x){if(x.t.getBoundingClientRect().top<=line)cur=x;});
