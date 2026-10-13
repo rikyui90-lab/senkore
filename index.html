@@ -87,6 +87,8 @@ th{font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap}
 td.imp{font-weight:500}
 td.imp .tag{background:var(--c)}
 tr.hot td.imp{color:var(--c);font-weight:700}
+.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.busho thead th:not(:first-child){text-align:right;white-space:normal;line-height:1.3}
 .sub{font-size:14px;font-weight:400;color:var(--muted)}
 .note{font-size:13px;color:var(--muted);margin:10px 0 0}
 .cmd{font-family:"IBM Plex Mono",monospace;font-size:13px;background:var(--accent-soft);padding:2px 6px;border-radius:4px;white-space:nowrap}
@@ -185,6 +187,8 @@ h3[id]{scroll-margin-top:72px}
       <a class="sublink" href="#at-ally">味方キャラのセリフ</a>
       <a class="sublink" href="#at-enemy">敵キャラのセリフ</a>
       <a class="sublink" href="#at-ryoma">開始時の龍馬</a>
+      <a class="sublink" href="#at-busho">武将の獲得割合</a>
+      <a class="sublink" href="#at-busho-skill">武将の性能</a>
       <a class="sublink" href="#at-opp">対戦相手</a>
       <a class="sublink" href="#at-tobira">扉絵</a>
     </div>
@@ -323,6 +327,52 @@ h3[id]{scroll-margin-top:72px}
         </tbody>
       </table></div>
       <p class="note">秘宝舞闘会は龍馬のセリフから始まります。上のセリフならATシナリオを示唆します。それ以外のセリフは示唆なしです。</p>
+    </div>
+
+    <div class="card">
+      <h3 id="at-busho">時幻城ミッション成功時の武将獲得割合</h3>
+      <p class="note" style="margin:0 0 8px">AT中</p>
+      <div class="tbl"><table class="busho">
+        <thead><tr><th scope="col">武将</th><th scope="col">楊貴妃・<br>クレオパトラ</th><th scope="col">小野小町</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="serif wrapok">ジョゼフィーヌ</th><td class="num">41.5%</td><td class="num">－</td></tr>
+          <tr><th scope="row" class="serif wrapok">陸遜</th><td class="num">16.4%</td><td class="num">33.6%</td></tr>
+          <tr><th scope="row" class="serif wrapok">劉備</th><td class="num">12.5%</td><td class="num">16.8%</td></tr>
+          <tr><th scope="row" class="serif wrapok">足利義満</th><td class="num">2.3%</td><td class="num">16.8%</td></tr>
+          <tr><th scope="row" class="serif wrapok">西郷隆盛</th><td class="num">25.0%</td><td class="num">16.4%</td></tr>
+          <tr><th scope="row" class="serif wrapok">ノストラダムス</th><td class="num">2.3%</td><td class="num">16.4%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note" style="margin:14px 0 8px">上位AT中（7揃いがないので、劉備は出ません）</p>
+      <div class="tbl"><table class="busho">
+        <thead><tr><th scope="col">武将</th><th scope="col">楊貴妃・<br>クレオパトラ</th><th scope="col">小野小町</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="serif wrapok">ジョゼフィーヌ</th><td class="num">41.5%</td><td class="num">－</td></tr>
+          <tr><th scope="row" class="serif wrapok">陸遜</th><td class="num">28.9%</td><td class="num">50.4%</td></tr>
+          <tr><th scope="row" class="serif wrapok">劉備</th><td class="num">－</td><td class="num">－</td></tr>
+          <tr><th scope="row" class="serif wrapok">足利義満</th><td class="num">2.3%</td><td class="num">16.8%</td></tr>
+          <tr><th scope="row" class="serif wrapok">西郷隆盛</th><td class="num">25.0%</td><td class="num">16.4%</td></tr>
+          <tr><th scope="row" class="serif wrapok">ノストラダムス</th><td class="num">2.3%</td><td class="num">16.4%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">AT中の時幻城ミッション（バトル）に成功すると、武将参戦ガチャで武将を1人獲得します。獲得する武将の割合は、そのときの対戦相手で変わります。小野小町で成功すると、ジョゼフィーヌ以外の武将になります。ジョゼフィーヌを3回続けて獲得すると、次の時幻城ミッションは、勝つまで小野小町に固定されます（ATを持ち越しても有効。通常時の鬼ヶ島チャレンジで武将ガチャチケットを4枚以上獲得するか、有利区間がリセットされると、回数は消えます）。小野小町の勝率は約90%で、勝つと約1/3の確率で足利義満かノストラダムスを獲得できます。武将ガチャチケットを持ってATに入ったときの振り分けは、AT中・楊貴妃の列と同じ割合です。</p>
+    </div>
+
+    <div class="card">
+      <h3 id="at-busho-skill">武将の性能</h3>
+      <div class="tbl"><table>
+        <thead><tr><th scope="col">武将</th><th scope="col">効果</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="serif wrapok">劉備</th><td>7揃いが高確率。キラは＋20G以上継続</td></tr>
+          <tr><th scope="row" class="serif wrapok">足利義満</th><td>ベル成立で上乗せ濃厚（上乗せ確率1/1.16、純増約7.7枚/G）</td></tr>
+          <tr><th scope="row" class="serif wrapok">陸遜</th><td>リプレイ成立で上乗せ濃厚</td></tr>
+          <tr><th scope="row" class="serif wrapok">西郷隆盛</th><td>上乗せが発生すると2倍に昇格</td></tr>
+          <tr><th scope="row" class="serif wrapok">ノストラダムス</th><td>上乗せが発生すると3桁以上に昇格</td></tr>
+          <tr><th scope="row" class="serif wrapok">ジョゼフィーヌ</th><td>レア小役成立で上乗せ濃厚</td></tr>
+          <tr><th scope="row" class="serif wrapok">卑弥呼</th><td>秘宝舞闘会に関わる。キラは継続濃厚、通常はレア小役成立で継続濃厚</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">武将の参戦中は継続G数が10G・20G・30Gのいずれかで、差枚数の減算が止まります。カードは通常とキラの2種類で、キラは20G以上の効果継続、または性能アップです。効果はAT中にチャンスボタンを押すと確認できます。</p>
     </div>
 
     <div class="card">
@@ -636,6 +686,7 @@ h3[id]{scroll-margin-top:72px}
       <a href="https://1geki.jp/slot/l_sencolle6/45/" target="_blank" rel="noopener">1geki 鬼ヶ島チャレンジ</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37691/" target="_blank" rel="noopener">ななプレス 鬼ヶ島チャレンジ</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37881/" target="_blank" rel="noopener">ななプレス セリフ演出（AT中）</a> ・
+      <a href="https://nana-press.com/kaiseki/machine/1156/37699/" target="_blank" rel="noopener">ななプレス 武将参戦ガチャ</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37700/" target="_blank" rel="noopener">ななプレス 秘宝舞闘会</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37708/" target="_blank" rel="noopener">ななプレス ATセット開始画面（扉絵）</a> ・
       <a href="https://nana-press.com/kaiseki/machine/1156/37697/" target="_blank" rel="noopener">ななプレス ATシナリオの詳細</a> ・
