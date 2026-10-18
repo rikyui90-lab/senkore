@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>今日のスロカス日記 | 戦コレ6</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="theme-color" content="#2A0F18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F6F1EC; --surface:#FFFFFF; --ink:#23161A; --muted:#6E5D62; --line:#E4D8D2;
+  --head:#2A0F18; --head-ink:#FBF3EE; --accent:#C2334A; --accent-soft:#F8E1E4;
+  --ane:#7A3FB8; --ane-soft:#EEE4F8; --imo:#D9577A; --imo-soft:#FBE3EA;
+  --t-def:#8A7F84; --t-b:#2C6CD6; --t-heaven:#D98A12; --t-strong:#C2334A; --t-top:#7A3FB8;
+  --mark:#FFF3B8;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#140B0E; --surface:#1F1418; --ink:#F1E7EA; --muted:#B3A2A8; --line:#3A2A30;
+    --head:#0B0406; --head-ink:#F1E7EA; --accent:#F0677D; --accent-soft:#3A1820;
+    --ane:#B98AEB; --ane-soft:#2C1D3D; --imo:#F28AA7; --imo-soft:#3A1A25;
+    --t-def:#8F8489; --t-b:#6FA3F0; --t-heaven:#F0B04A; --t-strong:#F0677D; --t-top:#B98AEB;
+    --mark:#4A3F12;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#140B0E; --surface:#1F1418; --ink:#F1E7EA; --muted:#B3A2A8; --line:#3A2A30;
+  --head:#0B0406; --head-ink:#F1E7EA; --accent:#F0677D; --accent-soft:#3A1820;
+  --ane:#B98AEB; --ane-soft:#2C1D3D; --imo:#F28AA7; --imo-soft:#3A1A25;
+  --t-def:#8F8489; --t-b:#6FA3F0; --t-heaven:#F0B04A; --t-strong:#F0677D; --t-top:#B98AEB;
+  --mark:#4A3F12;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;font-size:16px;line-height:1.8}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px}
+header{background:var(--head);color:var(--head-ink);padding-block:calc(32px + env(safe-area-inset-top,0px)) 26px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;opacity:.7}
+h1{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(26px,6vw,40px);line-height:1.25;margin:.2em 0 .35em;text-wrap:balance}
+h1 .em{color:var(--accent)}
+header p{margin:0;opacity:.85;max-width:60ch}
+.back{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;color:var(--head-ink);font-weight:700}
+.back:focus-visible,.entry a:focus-visible{outline:3px solid #ffd43d;outline-offset:2px}
+main{padding-block:8px 56px}
+.entry{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:20px}
+.entry h2{font-size:20px;line-height:1.45;margin:4px 0 10px}
+.date{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--muted)}
+.score{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 12px;padding:8px 12px;border-radius:8px;background:var(--accent-soft);font-weight:700}
+.score span small{font-weight:400;color:var(--muted);margin-right:4px}
+.entry p{margin:0 0 12px}
+.punch{margin:14px 0 0;padding:10px 12px;border-left:4px solid var(--accent);background:var(--mark);font-weight:700}
+.empty{color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-top:14px;font-size:14px;color:var(--muted)}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">SLOT KASU DIARY</div>
+    <h1>今日の<span class="em">スロカス</span>日記</h1>
+    <p>戦コレ6を打った、ある日の記録です。投稿をもとに、面白く編集しています。</p>
+    <a class="back" href="./">← セリフ示唆のページに戻る</a>
+  </div>
+</header>
+<main class="wrap">
+  <!-- 新しい日記は、ここ(先頭)に足す。ひな形:
+  <article class="entry" id="YYYY-MM-DD">
+    <div class="date">YYYY-MM-DD</div>
+    <h2>見出し</h2>
+    <p class="score"><span><small>投資</small>0円</span><span><small>回収</small>0円</span><span><small>収支</small>±0円</span></p>
+    <p>本文</p>
+    <p class="punch">オチ</p>
+  </article>
+  -->
+  <p class="empty">まだ日記がありません。</p>
+</main>
+<footer class="wrap">
+  <p>日記は個人の体験にもとづく読み物です。ギャンブルは、無理のない範囲で楽しみましょう。</p>
+</footer>
+</body>
+</html>
