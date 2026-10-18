@@ -93,6 +93,8 @@ table.busho thead th:not(:first-child){text-align:right;white-space:normal;line-
 .sub{font-size:14px;font-weight:400;color:var(--muted)}
 .note{font-size:13px;color:var(--muted);margin:10px 0 0}
 .cmd{font-family:"IBM Plex Mono",monospace;font-size:13px;background:var(--accent-soft);padding:2px 6px;border-radius:4px;white-space:nowrap}
+.legend-title{color:var(--ink);font-weight:700}
+.hot-sample{color:var(--ink)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin:0 0 14px}
 .serif.wrapok{white-space:normal}
 @media (max-width:560px){ .pair td:first-child{white-space:normal} .serif{white-space:normal} #at th,#at td{padding-inline:5px} #at td.imp{font-size:13px} }
@@ -226,11 +228,13 @@ h3[id]{scroll-margin-top:72px}
     <p class="lead">通常時の巻物演出、武将キャラ（家康・ミニキャラ）、セリフ（三巫女・闇アリス・龍馬）の示唆です。モードや規定コレ数、規定リプレイ、ATシナリオを示唆します。</p>
 
     <div class="legend">
+      <b class="legend-title">色の意味</b>
       <span><span class="tag" style="background:var(--t-def)"></span>特殊高確率モード・規定リプレイ・ステージ</span>
       <span><span class="tag" style="background:var(--t-b)"></span>モードB以上</span>
       <span><span class="tag" style="background:var(--t-heaven)"></span>天国モード・規定コレ数</span>
       <span><span class="tag" style="background:var(--t-strong)"></span>当該周期AT当選</span>
       <span><span class="tag" style="background:var(--t-top)"></span>ATシナリオ</span>
+      <span><b class="hot-sample">太字</b>＝「濃厚」と書かれている示唆</span>
     </div>
 
     <div class="card">
@@ -349,10 +353,12 @@ h3[id]{scroll-margin-top:72px}
     <p class="lead">コレポイント加算＋武将ガチャチケット高確率の特化ゾーン（5G継続）。画面下部の姉鬼・妹鬼のセリフが特殊パターンなら、モード・規定コレ数・ATシナリオを示唆します。姉と妹は同じ示唆内容のペアになっています。</p>
 
     <div class="legend">
+      <b class="legend-title">色の意味</b>
       <span><span class="tag" style="background:var(--t-b)"></span>モードB以上</span>
       <span><span class="tag" style="background:var(--t-heaven)"></span>天国・規定コレ数・ストック</span>
       <span><span class="tag" style="background:var(--t-strong)"></span>当該周期当選</span>
       <span><span class="tag" style="background:var(--t-top)"></span>ATシナリオ</span>
+      <span><b class="hot-sample">太字</b>＝「濃厚」と書かれている示唆</span>
     </div>
 
     <div class="card">
@@ -376,11 +382,13 @@ h3[id]{scroll-margin-top:72px}
     <p class="lead">AT「時幻城ラッシュ」中のセリフで、当該セットの継続率や、秘宝舞闘会の対戦相手・ATシナリオを示唆します。ATシナリオは全12種類あり、シナリオによってセットごとの継続率が変わります。</p>
 
     <div class="legend">
+      <b class="legend-title">色の意味</b>
       <span><span class="tag" style="background:var(--t-def)"></span>継続率 1% or 100%・対戦相手</span>
       <span><span class="tag" style="background:var(--t-b)"></span>継続率50%以上</span>
       <span><span class="tag" style="background:var(--t-heaven)"></span>継続率80%以上</span>
       <span><span class="tag" style="background:var(--t-strong)"></span>継続率100%</span>
       <span><span class="tag" style="background:var(--t-top)"></span>ATシナリオ</span>
+      <span><b class="hot-sample">太字</b>＝「濃厚」と書かれている示唆</span>
     </div>
 
     <div class="card">
@@ -560,6 +568,7 @@ h3[id]{scroll-margin-top:72px}
     <p class="lead">AT「時幻城ラッシュ」には、全12種類のATシナリオがあります。シナリオによって、セットごとの継続率(秘宝舞闘会で、次のセットへ進める確率)が決まります。5セット目まで突破すると、最終決戦へ進みます。全設定共通です。</p>
 
     <div class="legend">
+      <b class="legend-title">色の意味</b>
       <span><span class="chip r1">1</span>1%</span>
       <span><span class="chip r10">10</span>10%</span>
       <span><span class="chip r50">50</span>50%</span>
@@ -777,6 +786,15 @@ h3[id]{scroll-margin-top:72px}
   <section id="end">
     <h2>AT終了画面 <small>KONAMI COMMAND</small></h2>
     <p class="lead">AT終了画面で <span class="cmd">↑ ↑ ↓ ↓ ← → ← → チャンスボタン</span> を入力するとボイスが流れ、モードや当選周期を示唆します。聞き逃したら十字キーの「↑」をもう一度押すと再確認できます。</p>
+
+    <div class="legend">
+      <b class="legend-title">色の意味</b>
+      <span><span class="tag" style="background:var(--t-def)"></span>デフォルト</span>
+      <span><span class="tag" style="background:var(--t-b)"></span>モードB以上</span>
+      <span><span class="tag" style="background:var(--t-heaven)"></span>天国モード</span>
+      <span><span class="tag" style="background:var(--t-strong)"></span>AT当選（周期以内）</span>
+      <span><b class="hot-sample">太字</b>＝「濃厚」と書かれている示唆</span>
+    </div>
 
     <div class="card">
       <h3 id="end-voice">コナミコマンドのボイス</h3>
