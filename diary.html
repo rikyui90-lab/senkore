@@ -62,6 +62,16 @@ main{padding-block:8px 56px}
 .photos figure{margin:0;flex:1 1 140px;max-width:220px}
 .photos img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
 .photos figcaption{font-size:14px;color:var(--muted);margin-top:4px}
+.total{background:var(--surface);border:2px solid var(--accent);border-radius:10px;padding:16px;margin-top:20px}
+.total h2{font-size:18px;margin:0 0 4px}
+.total-num{font-size:32px;font-weight:700;line-height:1.3;margin:0}
+.total-num.plus{color:#1f7a3a}
+.total-num.minus{color:#c2334a}
+.total-sub{margin:4px 0 0;font-size:15px}
+.total .note{margin:10px 0 0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .total-num.plus{color:#6fd08c}:root:not([data-theme="light"]) .total-num.minus{color:#f0677d}}
+:root[data-theme="dark"] .total-num.plus{color:#6fd08c}
+:root[data-theme="dark"] .total-num.minus{color:#f0677d}
 .punch{margin:14px 0 0;padding:10px 12px;border-left:4px solid var(--accent);background:var(--mark);font-weight:700}
 .empty{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;font-size:14px;color:var(--muted)}
@@ -87,7 +97,13 @@ footer a{color:var(--accent)}
     <p class="punch">オチ</p>
   </article>
   -->
-  <article class="entry" id="2026-10-31">
+  <section class="total" id="total" aria-labelledby="total-h">
+    <h2 id="total-h">サワムの総合収支</h2>
+    <p class="total-num" id="total-num">集計中…</p>
+    <p class="total-sub" id="total-sub"></p>
+    <p class="note">日記に「円」で書いた収支を、足したものです。枚数だけで書いた日は、円に直せないので、合計には入れていません。</p>
+  </section>
+  <article class="entry" id="2026-10-31" data-medals="700">
     <div class="date">2026-10-31 ・ 杉田のベルシティー → 上野のピア ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支プラス700枚ぐらい 2000枚の杉田と、SR目でも単発の上野</h2>
     <p class="score"><span><small>収支</small>＋700枚ぐらい</span><span><small>杉田</small>2000枚ぐらい</span><span><small>上野</small>3連続単発</span></p>
@@ -107,7 +123,7 @@ footer a{color:var(--accent)}
     <p class="punch">教訓: 杉田の2000枚は、上野の単発3回を、受け止めてくれた。勝った日の貯金は、裏切らない。</p>
     <p class="note">参考: ななプレスの解説ページ(<a href="https://nana-press.com/kaiseki/machine/1156/37699/" target="_blank" rel="noopener">武将参戦ガチャ・武将の性能</a>・<a href="https://nana-press.com/kaiseki/machine/1156/37686/" target="_blank" rel="noopener">SR役(SR目)</a>)。解説はメーカー公式の情報ではありません。</p>
   </article>
-  <article class="entry" id="2026-10-27">
+  <article class="entry" id="2026-10-27" data-yen="-21000">
     <div class="date">2026-10-27 ・ 上野のピア ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支マイナス21000円 4台中3台が、当たり0回</h2>
     <p class="score"><span><small>収支</small>－21000円</span><span><small>最高</small>400何枚</span></p>
@@ -118,7 +134,7 @@ footer a{color:var(--accent)}
     <p>収支は、<b>マイナス21000円</b>。当たり0回の台が3台も残っていたのに、ひとつも爆発しなかった。4台中3台が当たり0回だったのは、人気がないだけでなく、出なかったからかもしれない。</p>
     <p class="punch">教訓: 当たり0回の台が何台も残っているときは、座る前に考えよう。空いている台には、空いている理由がある。</p>
   </article>
-  <article class="entry" id="2026-10-25">
+  <article class="entry" id="2026-10-25" data-yen="-35000">
     <div class="date">2026-10-25 ・ 川崎のピア(京急川崎駅前) ・ 機種: スマスロ モンキーターンV</div>
     <h2>サワムの日記 ― 収支マイナス35000円 お金返してください</h2>
     <p class="score"><span><small>収支</small>－35000円ぐらい</span><span><small>最高</small>500枚ぐらい</span></p>
@@ -128,7 +144,7 @@ footer a{color:var(--accent)}
     <p>ハッキングされたわけではない。台に、正規の手順で、お金を入れただけだ。「まあいいか」と思って、すぐに、「<b>よくねえよ</b>」と思い直した。</p>
     <p class="punch">教訓: 負けた日でも、財布の減り方だけは、裏切らない。</p>
   </article>
-  <article class="entry" id="2026-10-24">
+  <article class="entry" id="2026-10-24" data-yen="-30000">
     <div class="date">2026-10-24 ・ 川崎のピア(京急川崎駅前) ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支マイナス30000円 3人のコレクションで840枚出ても、負けは負け</h2>
     <p class="score"><span><small>収支</small>－30000円</span><span><small>回転数</small>1000回転ほど</span></p>
@@ -145,7 +161,7 @@ footer a{color:var(--accent)}
     <p class="punch">教訓: SR目は気まぐれで、写真も勝った場面しか写さない。それでも、<b>天井だけは、裏切らない</b>。ちゃんと、時間どおりにやってくる。</p>
     <p class="note">参考: ななプレスの解説ページ(<a href="https://nana-press.com/kaiseki/machine/1156/37686/" target="_blank" rel="noopener">SR役(SR目)</a>・<a href="https://nana-press.com/kaiseki/machine/1156/37704/" target="_blank" rel="noopener">3人のコレクション</a>・<a href="https://nana-press.com/kaiseki/machine/1156/37682/" target="_blank" rel="noopener">天井</a>)。解説はメーカー公式の情報ではありません。</p>
   </article>
-  <article class="entry" id="2026-10-23">
+  <article class="entry" id="2026-10-23" data-yen="-18000">
     <div class="date">2026-10-23 ・ 杉田のアビバ ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支マイナス18000円 いいことが何もなかった日</h2>
     <p class="score"><span><small>収支</small>－18000円</span></p>
@@ -155,7 +171,7 @@ footer a{color:var(--accent)}
     <p>そこで、<b>日高屋</b>に寄った。注文したのは、<b>ラーメンの大盛り</b>だ。負けた日の大盛りは、ありがたい。腹だけは、満たされて帰った。</p>
     <p class="punch">教訓: 負けた日は、いいことが何もなくても、ラーメンの大盛りは裏切らない。</p>
   </article>
-  <article class="entry" id="2026-10-21">
+  <article class="entry" id="2026-10-21" data-yen="14000">
     <div class="date">2026-10-21 ・ 上野のピア ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支プラス14000円 虹色の前兆と、お好み焼き</h2>
     <p class="score"><span><small>収支</small>＋14000円</span><span><small>最終</small>1100枚</span></p>
@@ -167,7 +183,7 @@ footer a{color:var(--accent)}
     <p>収支は<b>プラス14000円</b>。帰りは、<b>お好み焼き</b>を食べて帰った。勝った日のお好み焼きは、うまい。</p>
     <p class="punch">教訓: 当たり0回の台が残っていたら、座れ。やめどきでも、虹色の前兆は待っている。そして、勝った日のお好み焼きは、裏切らない。</p>
   </article>
-  <article class="entry" id="2026-10-20">
+  <article class="entry" id="2026-10-20" data-yen="2000">
     <div class="date">2026-10-20 ・ 上野のピア ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支プラス2000円 いい台ではなかったが、プラスで帰れた</h2>
     <p class="score"><span><small>収支</small>＋2000円</span><span><small>最高</small>900枚ぐらい</span><span><small>最終</small>750枚</span></p>
@@ -180,7 +196,7 @@ footer a{color:var(--accent)}
     <p>それでも、収支は<b>プラス2000円</b>。ハマり台を天井まで打って、示唆で天国まで拾って、プラスで帰れた。昨日の＋9000円と合わせて、<b>2日連続のプラス</b>、合計で<b>＋11000円</b>である。いい台ではなかったし、爆発もしなかったが、2日続けて、負けずに帰れた。</p>
     <p class="punch">教訓: 昨日は、いい台を拾った。今日は、いい台ではなかった。それでも、天井まで打って、示唆を拾えば、プラスで帰れる。リセット台の天井は、裏切らない。</p>
   </article>
-  <article class="entry" id="2026-10-19">
+  <article class="entry" id="2026-10-19" data-yen="9000">
     <div class="date">2026-10-19 ・ 杉田のベルシティー ・ 機種: スマスロ モンキーターンV</div>
     <h2>サワムの日記 ― 収支プラス9000円 空き台の浜岡ヘルメットに飛びついた</h2>
     <p class="score"><span><small>収支</small>＋9000円</span><span><small>展開</small>4連＋4連(上乗せなし)</span></p>
@@ -195,7 +211,7 @@ footer a{color:var(--accent)}
     <p class="punch">教訓: 空き台のヘルメットは、遠くからでも見える。そして、浜岡ヘルメットの空き台は、座る価値がある。ヘルメットは、裏切らない。</p>
     <p class="note">参考: ちょんぼりすたの解説ページ(<a href="https://chonborista.com/slot/yamasa-slot/monkeyturn5/202885/" target="_blank" rel="noopener">ヘルメットの示唆</a>・<a href="https://chonborista.com/slot/yamasa-slot/monkeyturn5/202993/" target="_blank" rel="noopener">中段チェリー</a>・<a href="https://chonborista.com/slot/yamasa-slot/monkeyturn5/202904/" target="_blank" rel="noopener">シナリオ</a>)。解説は攻略サイトの情報で、メーカー公式の情報ではありません。</p>
   </article>
-  <article class="entry" id="2026-10-18">
+  <article class="entry" id="2026-10-18" data-yen="-10000">
     <div class="date">2026-10-18 ・ 上野のピア ・ 機種: 戦コレ6</div>
     <h2>サワムの日記 ― 収支マイナス1万円 最終決戦で散り、天井で散り</h2>
     <p class="score"><span><small>1台目</small>＋1000枚</span><span><small>2台目</small>一時▲3万円 → 最終 －1000枚</span><span><small>収支</small>－1万円</span></p>
@@ -234,5 +250,24 @@ footer a{color:var(--accent)}
 <footer class="wrap">
   <p>日記は個人の体験にもとづく読み物です。ギャンブルは、無理のない範囲で楽しみましょう。</p>
 </footer>
+<script>
+(function(){
+  function fmt(n){return (n>0?'＋':n<0?'－':'±')+Math.abs(n).toLocaleString('ja-JP')+'円';}
+  var arts=[].slice.call(document.querySelectorAll('article.entry[data-yen]')).reverse();
+  var sum=0,win=0,lose=0;
+  arts.forEach(function(a){
+    var y=Number(a.getAttribute('data-yen'));
+    sum+=y;if(y>0)win++;else if(y<0)lose++;
+    var sc=a.querySelector('.score');
+    if(sc){var sp=document.createElement('span');var sm=document.createElement('small');sm.textContent='累計';sp.appendChild(sm);sp.appendChild(document.createTextNode(fmt(sum)));sc.appendChild(sp);}
+  });
+  var num=document.getElementById('total-num'),sub=document.getElementById('total-sub');
+  if(!num||!sub)return;
+  num.textContent=fmt(sum);
+  num.className='total-num '+(sum>0?'plus':sum<0?'minus':'');
+  var extra=[].slice.call(document.querySelectorAll('article.entry[data-medals]')).length;
+  sub.textContent=arts.length+'日分(勝ち'+win+'日・負け'+lose+'日)'+(extra?'。このほかに、枚数だけで書いた日が'+extra+'日あります':'');
+})();
+</script>
 </body>
 </html>
