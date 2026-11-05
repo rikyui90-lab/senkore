@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>サワムの収支 | 戦コレ6</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="theme-color" content="#2A0F18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F6F1EC; --surface:#FFFFFF; --ink:#23161A; --muted:#6E5D62; --line:#E4D8D2;
+  --head:#2A0F18; --head-ink:#FBF3EE; --accent:#C2334A; --accent-soft:#F8E1E4;
+  --ane:#7A3FB8; --ane-soft:#EEE4F8; --imo:#D9577A; --imo-soft:#FBE3EA;
+  --t-def:#8A7F84; --t-b:#2C6CD6; --t-heaven:#D98A12; --t-strong:#C2334A; --t-top:#7A3FB8;
+  --mark:#FFF3B8;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#140B0E; --surface:#1F1418; --ink:#F1E7EA; --muted:#B3A2A8; --line:#3A2A30;
+    --head:#0B0406; --head-ink:#F1E7EA; --accent:#F0677D; --accent-soft:#3A1820;
+    --ane:#B98AEB; --ane-soft:#2C1D3D; --imo:#F28AA7; --imo-soft:#3A1A25;
+    --t-def:#8F8489; --t-b:#6FA3F0; --t-heaven:#F0B04A; --t-strong:#F0677D; --t-top:#B98AEB;
+    --mark:#4A3F12;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#140B0E; --surface:#1F1418; --ink:#F1E7EA; --muted:#B3A2A8; --line:#3A2A30;
+  --head:#0B0406; --head-ink:#F1E7EA; --accent:#F0677D; --accent-soft:#3A1820;
+  --ane:#B98AEB; --ane-soft:#2C1D3D; --imo:#F28AA7; --imo-soft:#3A1A25;
+  --t-def:#8F8489; --t-b:#6FA3F0; --t-heaven:#F0B04A; --t-strong:#F0677D; --t-top:#B98AEB;
+  --mark:#4A3F12;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;font-size:16px;line-height:1.8}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px}
+header{background:var(--head);color:var(--head-ink);padding-block:calc(32px + env(safe-area-inset-top,0px)) 26px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;opacity:.7}
+h1{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(26px,6vw,40px);line-height:1.25;margin:.2em 0 .35em;text-wrap:balance}
+h1 .em{color:var(--accent)}
+header p{margin:0;opacity:.85;max-width:60ch}
+.back{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;color:var(--head-ink);font-weight:700}
+.back:focus-visible,.entry a:focus-visible{outline:3px solid #ffd43d;outline-offset:2px}
+main{padding-block:8px 56px}
+.entry{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:20px}
+.entry h2{font-size:20px;line-height:1.45;margin:4px 0 10px}
+.date{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--muted)}
+.score{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 12px;padding:8px 12px;border-radius:8px;background:var(--accent-soft);font-weight:700}
+.score span small{font-weight:400;color:var(--muted);margin-right:4px}
+.entry p{margin:0 0 12px}
+.entry ul{margin:0 0 12px;padding-left:1.4em}
+.entry li{margin-bottom:4px}
+.note{font-size:14px;color:var(--muted);margin:12px 0 0}
+.entry a{color:var(--accent)}
+.photos{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 12px}
+.photos figure{margin:0;flex:1 1 140px;max-width:220px}
+.photos img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+.photos figcaption{font-size:14px;color:var(--muted);margin-top:4px}
+.total{background:var(--surface);border:2px solid var(--accent);border-radius:10px;padding:16px;margin-top:20px}
+.total h2{font-size:18px;margin:0 0 4px}
+.total-num{font-size:32px;font-weight:700;line-height:1.3;margin:0}
+.total-num.plus{color:#1f7a3a}
+.total-num.minus{color:#c2334a}
+.total-sub{margin:4px 0 0;font-size:15px}
+.total .note{margin:10px 0 0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .total-num.plus{color:#6fd08c}:root:not([data-theme="light"]) .total-num.minus{color:#f0677d}}
+:root[data-theme="dark"] .total-num.plus{color:#6fd08c}
+:root[data-theme="dark"] .total-num.minus{color:#f0677d}
+.stats{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:20px}
+.stats h2{font-size:18px;margin:0 0 8px}
+.stats h3{font-size:16px;margin:16px 0 4px}
+.stats table{width:100%;border-collapse:collapse;font-size:15px}
+.stats th,.stats td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+.stats th{font-size:13px;color:var(--muted);font-weight:700}
+.stats td.n,.stats th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.stats td.plus{font-weight:700;color:#1f7a3a}
+.stats td.minus{font-weight:700;color:#c2334a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stats td.plus{color:#6fd08c}:root:not([data-theme="light"]) .stats td.minus{color:#f0677d}}
+:root[data-theme="dark"] .stats td.plus{color:#6fd08c}
+:root[data-theme="dark"] .stats td.minus{color:#f0677d}
+.punch{margin:14px 0 0;padding:10px 12px;border-left:4px solid var(--accent);background:var(--mark);font-weight:700}
+.empty{color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-top:14px;font-size:14px;color:var(--muted)}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">SLOT KASU BALANCE</div>
+    <h1>サワムの<span class="em">収支</span></h1>
+    <p>今日のスロカス日記に書いた収支を、足したものです。</p>
+    <a class="back" href="diary.html">← 今日のスロカス日記に戻る</a>
+    <a class="back" href="./">← セリフ示唆のページに戻る</a>
+  </div>
+</header>
+<main class="wrap">
+  <section class="total" id="total" aria-labelledby="total-h">
+    <h2 id="total-h">サワムの総合収支</h2>
+    <p class="total-num" id="total-num">集計中…</p>
+    <p class="total-sub" id="total-sub"></p>
+    <p class="note">日記の収支を、足したものです。枚数だけで書いた日は、1枚20円で計算しています。</p>
+  </section>
+  <section class="stats" id="stats" aria-labelledby="stats-h">
+    <h2 id="stats-h">月別・店別・機種別の収支</h2>
+    <div id="stats-body"><p class="note">集計中…</p></div>
+    <p class="note">日記の収支を、店と機種ごとに分けて足したものです。1日に何軒か回った日は、店ごとに分けた数字を使っています。店ごとの内訳が分からない日は、「杉田のベルシティー＋上野のピア」のように、まとめています。ルミネさんの日記は、入れていません。</p>
+  </section>
+</main>
+<footer class="wrap">
+  <p>日記は個人の体験にもとづく読み物です。ギャンブルは、無理のない範囲で楽しみましょう。</p>
+</footer>
+<script>
+(function(){
+  function fmt(n){return (n>0?'＋':n<0?'－':'±')+Math.abs(n).toLocaleString('ja-JP')+'円';}
+  function cls(n){return n>0?'plus':n<0?'minus':'';}
+  var num=document.getElementById('total-num'),sub=document.getElementById('total-sub'),body=document.getElementById('stats-body');
+  function fail(){num.textContent='読み込めませんでした';sub.textContent='日記のページを開き直してから、もう一度、開いてください。';body.textContent='';}
+  fetch('diary.html',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.text();}).then(function(html){
+    var doc=new DOMParser().parseFromString(html,'text/html');
+    var arts=[].slice.call(doc.querySelectorAll('article.entry[data-yen]'));
+    var sum=0,win=0,lose=0;
+    var month={},shop={},mach={};
+    function add(map,key,date,yen){var o=map[key]||(map[key]={yen:0,days:{}});o.yen+=yen;o.days[date]=1;}
+    arts.forEach(function(a){
+      var y=Number(a.getAttribute('data-yen'));sum+=y;if(y>0)win++;else if(y<0)lose++;
+      var list=[];try{list=JSON.parse(a.getAttribute('data-items')||'[]');}catch(e){}
+      list.forEach(function(it){add(month,a.id.slice(0,7).replace('-','年')+'月',a.id,it[2]);add(shop,it[0],a.id,it[2]);add(mach,it[1],a.id,it[2]);});
+    });
+    num.textContent=fmt(sum);num.className='total-num '+cls(sum);
+    sub.textContent=arts.length+'日分(勝ち'+win+'日・負け'+lose+'日)';
+    function table(title,map,keyLabel,sortKeys){
+      var keys=Object.keys(map);
+      if(sortKeys)keys.sort();else keys.sort(function(a,b){return map[b].yen-map[a].yen;});
+      var h=document.createElement('h3');h.textContent=title;body.appendChild(h);
+      var t=document.createElement('table');
+      var th=document.createElement('thead');th.innerHTML='<tr><th>'+keyLabel+'</th><th class="n">日数</th><th class="n">収支</th></tr>';t.appendChild(th);
+      var tb=document.createElement('tbody');
+      keys.forEach(function(k){
+        var tr=document.createElement('tr');
+        var a=document.createElement('td');a.textContent=k;
+        var b=document.createElement('td');b.className='n';b.textContent=Object.keys(map[k].days).length+'日';
+        var c=document.createElement('td');c.className='n '+cls(map[k].yen);c.textContent=fmt(map[k].yen);
+        tr.appendChild(a);tr.appendChild(b);tr.appendChild(c);tb.appendChild(tr);
+      });
+      t.appendChild(tb);body.appendChild(t);
+    }
+    body.textContent='';
+    table('月別',month,'月',true);
+    table('店別',shop,'店',false);
+    table('機種別',mach,'機種',false);
+  }).catch(fail);
+})();
+</script>
+</body>
+</html>

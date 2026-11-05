@@ -84,6 +84,9 @@ main{padding-block:8px 56px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stats td.plus{color:#6fd08c}:root:not([data-theme="light"]) .stats td.minus{color:#f0677d}}
 :root[data-theme="dark"] .stats td.plus{color:#6fd08c}
 :root[data-theme="dark"] .stats td.minus{color:#f0677d}
+.balance-link{margin:16px 0 0}
+.balance-link a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--accent)}
+.balance-link a:focus-visible{outline:3px solid #ffd43d;outline-offset:2px}
 .punch{margin:14px 0 0;padding:10px 12px;border-left:4px solid var(--accent);background:var(--mark);font-weight:700}
 .empty{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;font-size:14px;color:var(--muted)}
@@ -100,6 +103,7 @@ footer a{color:var(--accent)}
   </div>
 </header>
 <main class="wrap">
+  <p class="balance-link"><a href="balance.html">サワムの収支(総合・月別・店別・機種別)を見る →</a></p>
   <!-- 新しい日記は、ここ(先頭)に足す。ひな形:
   <article class="entry" id="YYYY-MM-DD">
     <div class="date">YYYY-MM-DD</div>
@@ -109,17 +113,6 @@ footer a{color:var(--accent)}
     <p class="punch">オチ</p>
   </article>
   -->
-  <section class="total" id="total" aria-labelledby="total-h">
-    <h2 id="total-h">サワムの総合収支</h2>
-    <p class="total-num" id="total-num">集計中…</p>
-    <p class="total-sub" id="total-sub"></p>
-    <p class="note">日記の収支を、足したものです。枚数だけで書いた日は、1枚20円で計算しています(10/31: ＋700枚ぐらい → ＋14000円)。</p>
-  </section>
-  <section class="stats" id="stats" aria-labelledby="stats-h">
-    <h2 id="stats-h">月別・店別・機種別の収支</h2>
-    <div id="stats-body"><p class="note">集計中…</p></div>
-    <p class="note">日記の収支を、店と機種ごとに分けて足したものです。1日に何軒か回った日は、店ごとに分けた数字を使っています。10/31は、店ごとの内訳が分からないので、「杉田のベルシティー＋上野のピア」としてまとめています。ルミネさんの日記は、入れていません。</p>
-  </section>
   <article class="entry" id="2026-11-05" data-yen="14000" data-items='[["杉田のベルシティー", "ラグナドール", -23000], ["杉田のベルシティー", "戦国コレクション6", 37000]]'>
     <div class="date">2026-11-05 ・ 杉田のベルシティー ・ 機種: ラグナドール → 戦国コレクション6</div>
     <h2>サワムの日記 ― 収支プラス14000円 ラグナドールにリベンジして、SR役を3回引いた</h2>
@@ -344,19 +337,12 @@ footer a{color:var(--accent)}
 (function(){
   function fmt(n){return (n>0?'＋':n<0?'－':'±')+Math.abs(n).toLocaleString('ja-JP')+'円';}
   var arts=[].slice.call(document.querySelectorAll('article.entry[data-yen]')).reverse();
-  var sum=0,win=0,lose=0;
+  var sum=0;
   arts.forEach(function(a){
-    var y=Number(a.getAttribute('data-yen'));
-    sum+=y;if(y>0)win++;else if(y<0)lose++;
+    sum+=Number(a.getAttribute('data-yen'));
     var sc=a.querySelector('.score');
     if(sc){var sp=document.createElement('span');var sm=document.createElement('small');sm.textContent='累計';sp.appendChild(sm);sp.appendChild(document.createTextNode(fmt(sum)));sc.appendChild(sp);}
   });
-  var num=document.getElementById('total-num'),sub=document.getElementById('total-sub');
-  if(!num||!sub)return;
-  num.textContent=fmt(sum);
-  num.className='total-num '+(sum>0?'plus':sum<0?'minus':'');
-  var extra=[].slice.call(document.querySelectorAll('article.entry[data-medals]')).length;
-  sub.textContent=arts.length+'日分(勝ち'+win+'日・負け'+lose+'日)'+(extra?'。このほかに、枚数だけで書いた日が'+extra+'日あります':'');
 })();
 </script>
 <script>
